@@ -92,6 +92,7 @@
             <button onclick="filterTopic('Tallo')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Tallo/Pares</button>
             <button onclick="filterTopic('Vascular')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Vascular</button>
             <button onclick="filterTopic('Conectoma')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Conectoma</button>
+            <button onclick="filterTopic('Caso Clínico')" class="shrink-0 px-4 py-1.5 text-sm font-bold rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-200 dark:hover:bg-emerald-800 transition">🩺 Casos Clínicos</button>
         </div>
 
         <!-- Barra de Buscador y Botón Aleatorio -->
@@ -1451,9 +1452,2051 @@
                 feedback: "¡Brillante! Esta es la clásica 'neuralgia vagoglosofaríngea con síncope'. El nervio de Hering (rama del IX par) lleva aferencias barorreceptoras al núcleo del tracto solitario (NTS). Un dolor intenso en el territorio del IX sobreestimula artificialmente el NTS, el cual activa el núcleo dorsal del Vago (X par), generando una descarga parasimpática masiva (bradicardia/asistolia y síncope)."
             }
         ];
+const moreQuestions = [
+  // =========================
+  // Pares Craneales (20)
+  // =========================
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Mujer de 54 años con diplopía horizontal súbita. En la exploración, el ojo derecho no abduce y el izquierdo aduce bien; no hay ptosis ni anisocoria. ¿Cuál es la localización más probable de la lesión?",
+    options: [
+      "Núcleo del VI derecho (puente dorsal)",
+      "Nervio VI derecho (fascículo/raíz en puente ventral o trayecto subaracnoideo)",
+      "Fascículo longitudinal medial derecho",
+      "Núcleo de Edinger–Westphal derecho"
+    ],
+    correct: 1,
+    feedback: "Correcto: un déficit aislado de abducción ipsilateral con aducción contralateral preservada sugiere lesión del nervio VI (no del núcleo)."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Varón de 67 años con diplopía y ptosis derechas. Ojo derecho en “down and out”; pupila derecha midriática y poco reactiva. Dolor orbitario. ¿Qué mecanismo es más consistente con el patrón pupilar?",
+    options: [
+      "Isquemia microvascular intraneural del III con preservación pupilar",
+      "Compresión externa del III afectando fibras parasimpáticas superficiales",
+      "Lesión del núcleo del III en mesencéfalo con afectación bilateral",
+      "Lesión del VI con sinergia pupilar refleja"
+    ],
+    correct: 1,
+    feedback: "Correcto: la midriasis dolorosa con oftalmoplejía del III orienta a compresión (p. ej., aneurisma PCom) por compromiso pupilar superficial."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con vértigo intenso y nistagmo horizontal-torsional. La fijación visual reduce el nistagmo; el head impulse es positivo hacia la derecha. ¿Cuál interpretación es más probable?",
+    options: [
+      "Síndrome vestibular periférico derecho (hipofunción del VIII/laberinto)",
+      "Lesión del flóculo cerebeloso izquierdo",
+      "Parálisis supranuclear de la mirada horizontal",
+      "INO por lesión del FLM derecho"
+    ],
+    correct: 0,
+    feedback: "Correcto: supresión con fijación + head impulse positivo orientan a vestibulopatía periférica ipsilateral."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Dolor lancinante faríngeo desencadenado por deglución; episodios de bradicardia e hipotensión con presíncope. ¿Qué vía explica mejor el componente autonómico?",
+    options: [
+      "Aferencias del IX al NTS con activación de circuitos vagales cardioinhibitorios",
+      "Aferencias del V al núcleo motor del V con reflejo simpático",
+      "Eferencias del XII al núcleo ambiguo con vasodilatación periférica",
+      "Proyección del VII al locus coeruleus con descarga adrenérgica"
+    ],
+    correct: 0,
+    feedback: "Correcto: aferencias del IX pueden activar NTS y reflejos vagales, explicando síncope reflejo."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Parálisis facial periférica izquierda, hiperacusia y pérdida del gusto en 2/3 anteriores de la lengua. ¿Qué sitio de lesión es más coherente?",
+    options: [
+      "Distal al foramen estilomastoideo",
+      "Proximal a la rama para estapedio y cuerda del tímpano (segmento intrapetroso)",
+      "Núcleo facial pontino sin afectar fibras vecinas",
+      "Lesión del nervio trigémino en ganglio de Gasser"
+    ],
+    correct: 1,
+    feedback: "Correcto: hiperacusia (estapedio) + disgeusia anterior (cuerda del tímpano) implican lesión proximal intrapetrosa del VII."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con diplopía vertical que empeora al mirar hacia abajo al leer y al bajar escaleras. Compensa inclinando la cabeza hacia el hombro contralateral. ¿Cuál músculo está principalmente afectado?",
+    options: [
+      "Recto superior",
+      "Oblicuo superior",
+      "Recto lateral",
+      "Oblicuo inferior"
+    ],
+    correct: 1,
+    feedback: "Correcto: el IV (oblicuo superior) deprime en aducción; el tilt compensatorio es típico."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Pérdida de sensibilidad dolorosa/temperatura en hemicara derecha, reflejo corneal abolido (aferencia), sin debilidad masticatoria. ¿Dónde está más probablemente la lesión?",
+    options: [
+      "Núcleo motor del V",
+      "Núcleo espinal del trigémino derecho",
+      "Núcleo mesencefálico del trigémino",
+      "Nervio V3 periférico"
+    ],
+    correct: 1,
+    feedback: "Correcto: dolor/temperatura facial y aferencia corneal dependen de la vía espinal del V."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Disfagia y voz bitonal con desviación de úvula hacia la derecha. ¿Cuál lado está afectado y cuál estructura es la más implicada?",
+    options: [
+      "Lesión derecha del núcleo ambiguo/X",
+      "Lesión izquierda del núcleo ambiguo/X",
+      "Lesión derecha del XII",
+      "Lesión izquierda del IX con eferencia palatina"
+    ],
+    correct: 1,
+    feedback: "Correcto: la úvula se desvía hacia el lado sano; paladar cae del lado lesionado (izquierdo) por X/núcleo ambiguo."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Pupilas isocóricas; no hay respuesta directa ni consensual al iluminar el ojo izquierdo, pero sí hay respuesta bilateral al iluminar el ojo derecho. ¿Qué defecto explica mejor el hallazgo?",
+    options: [
+      "Eferencia parasimpática izquierda (III) lesionada",
+      "Aferencia izquierda (II) lesionada",
+      "Lesión bilateral de Edinger–Westphal",
+      "Lesión del ganglio cervical superior derecho"
+    ],
+    correct: 1,
+    feedback: "Correcto: es un defecto aferente izquierdo: la luz en ojo izquierdo no llega a pretecto/EW; luz en el derecho produce respuestas bilaterales."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Debilidad para elevar el hombro derecho y dificultad para girar la cabeza hacia la izquierda. ¿Qué nervio y músculos se correlacionan mejor?",
+    options: [
+      "XI derecho: trapecio derecho y ECM derecho",
+      "XI izquierdo: trapecio derecho y ECM izquierdo",
+      "X derecho: trapecio derecho y ECM derecho",
+      "VII derecho: trapecio derecho y ECM derecho"
+    ],
+    correct: 0,
+    feedback: "Correcto: el XI inerva trapecio y ECM ipsilaterales; ECM derecho rota cabeza hacia la izquierda."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Hipoacusia neurosensorial súbita con vértigo, seguida de parálisis facial periférica. Sospecha de compromiso vascular de arteria laberíntica/AICA. ¿Qué combinación anatómica lo hace plausible?",
+    options: [
+      "Compartimiento compartido de irrigación del oído interno y estructuras del ángulo pontocerebeloso",
+      "Irrigación común de núcleo ambiguo y retina",
+      "Irrigación común del hipocampo y laberinto por PCA",
+      "Irrigación común de M1 y cóclea por ACA"
+    ],
+    correct: 0,
+    feedback: "Correcto: AICA/laberíntica puede afectar oído interno y estructuras cercanas (VII/VIII), explicando el síndrome combinado."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con miosis, ptosis leve y anhidrosis facial izquierdas tras dolor cervical. ¿Qué vía está comprometida en Horner de origen carotídeo?",
+    options: [
+      "Neurona preganglionar T1 a ganglio cervical superior",
+      "Fibras posganglionares simpáticas que viajan con la carótida interna",
+      "Núcleo de Edinger–Westphal",
+      "Tracto óptico ipsilateral"
+    ],
+    correct: 1,
+    feedback: "Correcto: en disección carotídea se afectan fibras simpáticas posganglionares del plexo carotídeo interno."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Disartria y desviación de la mandíbula hacia la derecha al abrir la boca; fuerza maseterina reducida derecha. ¿Qué nervio está comprometido?",
+    options: [
+      "VII",
+      "V3 (rama mandibular del trigémino)",
+      "IX",
+      "XII"
+    ],
+    correct: 1,
+    feedback: "Correcto: V3 inerva músculos de la masticación; la mandíbula se desvía hacia el lado débil."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con oscilopsia y nistagmo vertical hacia abajo (downbeat), peor con mirada lateral; head impulse negativo. ¿Qué localización es más probable?",
+    options: [
+      "Vestibulopatía periférica derecha",
+      "Cerebelo floculonodular/ unión cráneo-cervical (origen central)",
+      "Lesión aislada del nervio VI",
+      "Lesión del ganglio cervical superior"
+    ],
+    correct: 1,
+    feedback: "Correcto: downbeat con head impulse negativo sugiere origen central, frecuentemente cerebeloso (flóculo/nódulo)."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Pérdida del reflejo nauseoso con elevación palatina voluntaria conservada. ¿Qué componente del reflejo es el más probablemente deficitario?",
+    options: [
+      "Aferencia sensitiva faríngea (IX) hacia NTS",
+      "Eferencia motora faríngea (X) desde núcleo ambiguo",
+      "Vía corticobulbar bilateral",
+      "Músculos intrínsecos laríngeos por laríngeo recurrente"
+    ],
+    correct: 0,
+    feedback: "Correcto: si la elevación voluntaria existe, la eferencia está relativamente intacta; la falla suele ser aferente (IX/NTS)."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con anisocoria mayor en la oscuridad, ptosis leve y normal respuesta a luz. ¿Qué componente fisiológico explica la anisocoria?",
+    options: [
+      "Falla parasimpática (III) del ojo con pupila grande",
+      "Falla simpática del ojo con pupila pequeña que no dilata en oscuridad",
+      "Lesión retiniana bilateral",
+      "Falla del músculo ciliar"
+    ],
+    correct: 1,
+    feedback: "Correcto: en Horner, la pupila afectada no dilata bien en oscuridad → anisocoria mayor en oscuridad."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Disfonía y tos inefectiva tras cirugía tiroidea. Se observa cuerda vocal derecha inmóvil en posición paramediana. ¿Qué nervio se lesionó con mayor probabilidad?",
+    options: [
+      "Laríngeo superior (rama interna)",
+      "Laríngeo recurrente derecho",
+      "Glosofaríngeo",
+      "Hipogloso"
+    ],
+    correct: 1,
+    feedback: "Correcto: el laríngeo recurrente inerva casi todos los músculos laríngeos; su lesión causa paresia cordal y disfonía."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Pérdida de lagrimeo y disgeusia anterior sin hiperacusia. ¿Cuál combinación anatómica lo explica mejor?",
+    options: [
+      "Lesión del VII distal al ganglio geniculado y proximal a cuerda del tímpano, respetando estapedio",
+      "Lesión del VII distal al foramen estilomastoideo",
+      "Lesión del V1",
+      "Lesión del IX"
+    ],
+    correct: 0,
+    feedback: "Correcto: fibras parasimpáticas lagrimales y gustativas viajan por VII; el patrón depende del nivel respecto a ramas."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Ojo derecho no aduce al mirar a la izquierda; el ojo izquierdo abduce con nistagmo. Convergencia preservada. ¿Cuál es el diagnóstico más probable?",
+    options: [
+      "Parálisis del III derecho completa",
+      "Oftalmoplejía internuclear derecha (lesión FLM)",
+      "Parálisis supranuclear horizontal izquierda",
+      "Lesión del núcleo abducens izquierdo"
+    ],
+    correct: 1,
+    feedback: "Correcto: INO por lesión del FLM: falla aducción ipsilateral, nistagmo del ojo abductor, convergencia suele preservarse."
+  },
 
+  // =========================
+  // Conectoma (20)
+  // =========================
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Mujer de 60 años con dificultad para repetir frases largas, pero comprensión y fluencia relativamente buenas. La denominación es variable. RM sugiere lesión en sustancia blanca perisilviana. ¿Qué fascículo es el mejor candidato?",
+    options: [
+      "Fascículo arcuato",
+      "Fórnix",
+      "Cíngulo",
+      "Tracto óptico"
+    ],
+    correct: 0,
+    feedback: "Correcto: el arcuato conecta redes temporales posteriores con frontales del lenguaje; su lesión se asocia a afasia de conducción."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Paciente con prosopagnosia adquirida y agnosia visual de objetos complejos. La lesión se ubica en red occípito-temporal ventral derecha. ¿Qué tracto de asociación apoya esta red?",
+    options: [
+      "Fascículo longitudinal inferior (ILF)",
+      "Fascículo longitudinal superior (SLF)",
+      "Tracto corticoespinal",
+      "Tracto mamilotalámico"
+    ],
+    correct: 0,
+    feedback: "Correcto: ILF conecta occipital con temporal anterior/ventral, clave para reconocimiento de caras/objetos."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Alexia sin agrafia tras infarto occipital izquierdo. El paciente escribe, pero no puede leer lo que escribió. ¿Qué desconexión lo explica mejor?",
+    options: [
+      "Lesión del esplenio calloso que impide transferencia visual derecha hacia lenguaje izquierdo",
+      "Lesión del fascículo arcuato bilateral",
+      "Lesión del SLF izquierdo",
+      "Lesión del fórnix"
+    ],
+    correct: 0,
+    feedback: "Correcto: se desconecta la información visual del hemisferio derecho hacia redes de lectura del hemisferio dominante por daño esplenial."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Negligencia espacial izquierda severa tras lesión parietal derecha. La exploración sugiere desconexión fronto-parietal. ¿Qué tracto es más relevante?",
+    options: [
+      "SLF derecho",
+      "ILF izquierdo",
+      "Fórnix",
+      "Pedúnculo cerebeloso inferior"
+    ],
+    correct: 0,
+    feedback: "Correcto: el SLF integra nodos fronto-parietales de atención; su daño derecho se asocia fuertemente a negligencia."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Apraxia ideomotora de mano izquierda con lenguaje normal tras lesión callosa anterior. ¿Qué principio de conectividad explica mejor el déficit?",
+    options: [
+      "Desconexión interhemisférica entre programas motores del hemisferio dominante y corteza motora del no dominante",
+      "Lesión del fascículo arcuato",
+      "Interrupción del bucle de Meyer",
+      "Daño primario del cerebelo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la mano izquierda depende de transferencia callosa desde redes praxias dominantes hacia M1 contralateral."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Déficit semántico y anomia con repetición relativamente preservada; imagen sugiere lesión de vía ventral fronto-temporal. ¿Qué tracto es más plausible?",
+    options: [
+      "IFOF (fronto-occipital inferior) izquierdo",
+      "SLF derecho",
+      "Tracto corticoespinal",
+      "Comisura posterior"
+    ],
+    correct: 0,
+    feedback: "Correcto: el IFOF soporta rutas ventrales semánticas y control fronto-temporal del significado."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Amnesia anterógrada marcada tras lesión bilateral de sustancia blanca medial del diencéfalo. ¿Qué vía eferente hipocampal es crítica?",
+    options: [
+      "Fórnix",
+      "Arcuato",
+      "SLF",
+      "ILF"
+    ],
+    correct: 0,
+    feedback: "Correcto: el fórnix es la vía mayor de salida hipocampal hacia septo/cuerpos mamilares (memoria episódica)."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Lesión retrolenticular de la cápsula interna derecha. ¿Qué déficit visual esperas con mayor probabilidad?",
+    options: [
+      "Hemianopsia homónima izquierda",
+      "Ceguera monocular derecha",
+      "Escotoma central bilateral",
+      "Diplopía vertical"
+    ],
+    correct: 0,
+    feedback: "Correcto: la porción retrolenticular contiene radiaciones ópticas; lesión derecha causa hemianopsia contralateral."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Lesión sublenticular izquierda con hipoacusia cortical/discriminación alterada sin daño periférico. ¿Qué fibras se afectan preferentemente?",
+    options: [
+      "Radiaciones auditivas (CGM → Heschl)",
+      "Radiaciones ópticas (LGN → calcarina)",
+      "Tracto mamilotalámico",
+      "Tracto rubroespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: las radiaciones auditivas atraviesan región sublenticular hacia corteza auditiva primaria."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Trastorno de la prosodia emocional (aprosodia) con lenguaje proposicional conservado, tras lesión derecha temporo-parietal. ¿Qué marco explicativo es más adecuado?",
+    options: [
+      "Dominancia hemisférica: el hemisferio derecho participa en prosodia y pragmática",
+      "La prosodia depende exclusivamente de ganglios basales",
+      "La prosodia se procesa solo en cerebelo",
+      "La prosodia depende únicamente del tracto corticoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: redes derechas temporo-parietales/frontales contribuyen a prosodia emocional y pragmática."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Un paciente con lesión del unciforme presenta alteración en regulación emocional y decisiones basadas en valor (conducta desinhibida). ¿Qué conectividad se afecta principalmente?",
+    options: [
+      "Orbitofrontal ↔ temporal anterior/amígdala",
+      "Occipital ↔ parietal dorsal",
+      "Cerebelo ↔ médula",
+      "Tálamo VPL ↔ S1"
+    ],
+    correct: 0,
+    feedback: "Correcto: el unciforme conecta OFC con amígdala/temporal anterior, esencial para valoración y control emocional."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Síndrome de Balint (simultanagnosia, ataxia óptica, apraxia oculomotora) tras lesión bilateral parieto-occipital. ¿Qué vía funcional se altera primordialmente?",
+    options: [
+      "Vía dorsal occipito-parietal (“dónde/cómo”)",
+      "Vía ventral occipito-temporal (“qué”)",
+      "Vía auditiva troncal",
+      "Vía olfatoria primaria"
+    ],
+    correct: 0,
+    feedback: "Correcto: el síndrome refleja disfunción de red dorsal para atención visuoespacial y guía visuomotora."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Dificultad para iniciar habla y bloqueos de fluencia con comprensión preservada; lesión cerca de SMA/IFG. ¿Qué tracto es candidato mecanístico?",
+    options: [
+      "Fascículo frontal aslant (FAT)",
+      "ILF",
+      "Fórnix",
+      "Tracto espinotalámico"
+    ],
+    correct: 0,
+    feedback: "Correcto: FAT conecta SMA/preSMA con IFG y se asocia a iniciación/fluencia del habla."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Lesión del cíngulo se asocia a apatía/abulia y alteración de memoria contextual. ¿Cuál conectividad sustenta esto?",
+    options: [
+      "Conexiones medial prefrontal–parahipocampo (bundle del cíngulo)",
+      "Radiaciones ópticas",
+      "Arcuato",
+      "Tracto rubroespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cíngulo integra DMN y circuitos límbicos, apoyando motivación y memoria contextual."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: En tractografía, se observa interrupción de fibras corticopontinas frontales con preservación de salida cerebelosa. ¿Cuál vía aferente al cerebelo se compromete más?",
+    options: [
+      "Cortico-ponto-cerebelosa (núcleos pontinos → pedúnculo medio)",
+      "Olivocerebelosa (pedúnculo inferior)",
+      "Vestibulocerebelosa (pedúnculo inferior)",
+      "Dentato-rubro-talámica (pedúnculo superior)"
+    ],
+    correct: 0,
+    feedback: "Correcto: la entrada cortical al cerebelo viaja por núcleos pontinos y pedúnculo cerebeloso medio."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Daño del esplenio calloso con fenómenos de “mano ajena” y dificultades visuoespaciales interhemisféricas. ¿Qué función de conectoma se altera?",
+    options: [
+      "Transferencia interhemisférica posterior parieto-occipital",
+      "Conectividad fronto-parietal dorsal",
+      "Circuito de Papez",
+      "Bucle de Meyer"
+    ],
+    correct: 0,
+    feedback: "Correcto: el esplenio conecta regiones posteriores y su lesión altera integración visuoespacial interhemisférica."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Lesión en sustancia blanca temporo-occipital izquierda con anomia visual (no puede nombrar objetos vistos), pero los reconoce por tacto. ¿Qué explicación es más adecuada?",
+    options: [
+      "Desconexión de vía ventral visual hacia redes semánticas/lenguaje",
+      "Déficit primario motor",
+      "Afectación exclusiva de vía dorsal",
+      "Lesión del núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la anomia visual sugiere interrupción de la ruta ventral “qué” hacia semántica/lenguaje."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Disfunción ejecutiva con lentitud cognitiva tras lesión en red fronto-parietal bilateral. ¿Qué arquitectura de red describe mejor este sistema?",
+    options: [
+      "Red fronto-parietal de control (control ejecutivo adaptable)",
+      "Red salience exclusivamente temporal",
+      "DMN exclusivamente",
+      "Red visual primaria"
+    ],
+    correct: 0,
+    feedback: "Correcto: la red fronto-parietal sostiene control ejecutivo flexible y su daño produce lentitud y mala adaptación."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Hipersomnia y falla atencional tras lesión talámica paramediana; se sospecha compromiso de proyecciones de arousal. ¿Qué eje es más relevante?",
+    options: [
+      "ARAS troncal → tálamo intralaminar/medial → corteza",
+      "Retina → LGN → V1",
+      "Núcleos cocleares → colículo inferior",
+      "Hipocampo → fórnix → cuerpos mamilares exclusivamente"
+    ],
+    correct: 0,
+    feedback: "Correcto: el arousal depende de proyecciones ascendentes tronco-talámico-corticales (intralaminares/mediales)."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Trastorno de coordinación bimanual tras lesión callosa; cada mano ejecuta secuencias motoras adecuadas por separado. ¿Qué papel del cuerpo calloso queda más expuesto?",
+    options: [
+      "Sincronización y acoplamiento interhemisférico de programas motores",
+      "Generación primaria de fuerza",
+      "Procesamiento visual foveal",
+      "Control autonómico bulbar"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cuerpo calloso facilita coordinación bimanual sincronizando planes motores entre hemisferios."
+  },
+
+  // =========================
+  // Sinapsis (18)
+  // =========================
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: En un modelo de epileptogénesis, se observa pérdida de inhibición perisomática rápida y aumento de sincronía. ¿Qué población interneuronal está más implicada?",
+    options: [
+      "Interneuronas PV (parvalbúmina) de disparo rápido",
+      "Interneuronas SST (somatostatina) dendríticas",
+      "Interneuronas VIP disinhibitorias",
+      "Células de Purkinje"
+    ],
+    correct: 0,
+    feedback: "Correcto: PV controla inhibición perisomática y timing; su disfunción favorece hipersincronía."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: En un registro sináptico, el segundo EPSC es mayor que el primero con intervalo corto. ¿Qué mecanismo presináptico lo explica mejor?",
+    options: [
+      "Depleción de vesículas del pool listo",
+      "Ca2+ residual presináptico que aumenta la probabilidad de liberación",
+      "Internalización rápida de AMPAR",
+      "Bloqueo por Mg2+ de NMDA aumentado"
+    ],
+    correct: 1,
+    feedback: "Correcto: la facilitación a corto plazo suele reflejar Ca2+ residual que incrementa Pr."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: En un protocolo repetitivo, el EPSC disminuye progresivamente en sinapsis de alta Pr. ¿Cuál explicación es más probable?",
+    options: [
+      "Potenciación de AMPAR",
+      "Depleción del pool vesicular liberable",
+      "Aumento de Ca2+ residual",
+      "Aumento de liberación espontánea (minis)"
+    ],
+    correct: 1,
+    feedback: "Correcto: alta Pr agota vesículas rápidamente y produce depresión sináptica a corto plazo."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se bloquea farmacológicamente NMDA; desaparece la inducción de LTP en CA1, pero la transmisión basal AMPA persiste. ¿Qué rol de NMDA se está evidenciando?",
+    options: [
+      "Transmisión excitatoria rápida principal",
+      "Detector de coincidencia Ca2+-dependiente para plasticidad",
+      "Receptor inhibitorio tónico",
+      "Transportador de glutamato"
+    ],
+    correct: 1,
+    feedback: "Correcto: NMDA aporta Ca2+ para señalización de plasticidad; AMPA mantiene EPSPs rápidos basales."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Mutación que reduce sinaptotagmina produce liberación evoked muy disminuida, con minis relativamente conservados. ¿Qué paso del ciclo vesicular se afecta más?",
+    options: [
+      "Detección de Ca2+ y disparo de fusión",
+      "Síntesis de glutamato",
+      "Recaptación astrocitaria de glutamato",
+      "Formación de gap junctions"
+    ],
+    correct: 0,
+    feedback: "Correcto: sinaptotagmina es el sensor de Ca2+ que acopla entrada de Ca2+ a fusión vesicular rápida."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se observa 'shunting' con aumento de conductancia sin hiperpolarización marcada durante IPSPs. ¿Qué efecto funcional predomina?",
+    options: [
+      "Amplificación de EPSPs",
+      "Reducción de la amplitud efectiva de EPSPs por disminución de resistencia de membrana",
+      "Conversión de inhibición en excitación",
+      "Aumento de Ca2+ dendrítico por NMDA"
+    ],
+    correct: 1,
+    feedback: "Correcto: el shunting reduce impacto de EPSPs al aumentar conductancia y disminuir la resistencia de membrana."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: En un circuito disinhibitorio, la activación de interneuronas VIP incrementa la respuesta de piramidales a entradas apicales. ¿Cuál es el blanco típico de VIP?",
+    options: [
+      "Interneuronas SST (inhibición dendrítica)",
+      "Motoneuronas espinales",
+      "Células granulares cerebelosas",
+      "Núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: VIP suele inhibir SST, desinhibiendo dendritas de piramidales y aumentando ganancia."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: LTD se induce con estimulación de baja frecuencia y depende de Ca2+ moderado/prolongado. ¿Qué vía enzimática es más coherente?",
+    options: [
+      "Predominio de fosfatasas (p. ej., calcineurina) sobre quinasas",
+      "Predominio de CaMKII únicamente",
+      "Bloqueo de toda señalización Ca2+ dependiente",
+      "Apertura de canales de Na+ presinápticos"
+    ],
+    correct: 0,
+    feedback: "Correcto: LTD suele depender de Ca2+ moderado que favorece fosfatasas y retirada/modulación de AMPAR."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Plasticidad dependiente de spike-timing: pre→post produce LTP; post→pre produce LTD. ¿Qué concepto resume este hallazgo?",
+    options: [
+      "Homeostasis sináptica global",
+      "STDP como regla de coincidencia temporal",
+      "Conducción saltatoria",
+      "Transmisión por volumen"
+    ],
+    correct: 1,
+    feedback: "Correcto: STDP codifica causalidad temporal entre entrada presináptica y disparo postsináptico."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se detecta aumento de EAAT astrocitario y mejor clearance de glutamato; disminuye excitotoxicidad. ¿Qué función glial se está modulando?",
+    options: [
+      "Recaptación de glutamato y control de duración del glutamato extracelular",
+      "Liberación vesicular presináptica",
+      "Generación de potenciales de acción",
+      "Producción de mielina por oligodendrocitos"
+    ],
+    correct: 0,
+    feedback: "Correcto: EAAT astrocitario reduce glutamato extracelular, limitando activación excesiva de receptores y excitotoxicidad."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Cambios uniformes (multiplicativos) de amplitud de mEPSCs tras privación sensorial crónica, estabilizando firing. ¿Qué fenómeno describe esto?",
+    options: [
+      "Synaptic scaling (homeostasis sináptica)",
+      "LTP hebbiano local",
+      "Facilitación a corto plazo",
+      "Inhibición presináptica"
+    ],
+    correct: 0,
+    feedback: "Correcto: el escalamiento sináptico ajusta globalmente la ganancia para mantener estabilidad de actividad."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se observa poda sináptica excesiva durante neurodesarrollo asociada a activación microglial. ¿Qué mecanismo es más plausible?",
+    options: [
+      "Señalización complemento-microglía dependiente de actividad",
+      "Bloqueo de SNARE en neuronas",
+      "Aumento de conducción por uniones gap",
+      "Activación de Edinger–Westphal"
+    ],
+    correct: 0,
+    feedback: "Correcto: microglía participa en poda sináptica mediante señales inmunes (incl. complemento) moduladas por actividad."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Aumento de 'nanocolumn alignment' mejora fiabilidad sináptica sin cambiar número total de receptores. ¿Qué se está optimizando principalmente?",
+    options: [
+      "Geometría transsináptica entre zona activa y nanoclústeres postsinápticos",
+      "Velocidad de conducción axonal",
+      "Producción de LCR",
+      "Irrigación capilar"
+    ],
+    correct: 0,
+    feedback: "Correcto: el alineamiento reduce variabilidad al liberar transmisor cerca de máxima densidad receptorial."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se administra agonista GABA-B y se observa reducción de liberación presináptica de glutamato. ¿Qué mecanismo es más directo?",
+    options: [
+      "Aumento de canales Ca2+ presinápticos",
+      "Inhibición de Ca2+ presináptico vía Gi/o y/o activación de GIRK",
+      "Inserción de AMPAR postsinápticos",
+      "Activación de NMDA por remoción de Mg2+"
+    ],
+    correct: 1,
+    feedback: "Correcto: GABA-B (Gi/o) reduce entrada de Ca2+ presináptico y puede activar GIRK, disminuyendo liberación."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Mutación que altera SNAP-25 produce liberación evoked reducida. ¿Qué complejo se afecta directamente?",
+    options: [
+      "SNARE (Syntaxin–SNAP-25–VAMP)",
+      "Receptores AMPA",
+      "Gephyrin",
+      "HCN"
+    ],
+    correct: 0,
+    feedback: "Correcto: SNAP-25 es parte del SNARE esencial para acoplar vesícula a membrana y fusionar."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: En estriado, estimulación dopaminérgica D1 potencia selección de acción. ¿Qué cascada es más compatible con D1?",
+    options: [
+      "Gs/adenilato ciclasa → ↑cAMP/PKA",
+      "Gi → ↓cAMP/PKA",
+      "Apertura directa de canales Cl−",
+      "Bloqueo de SNARE"
+    ],
+    correct: 0,
+    feedback: "Correcto: D1 suele acoplarse a Gs, aumentando cAMP/PKA y facilitando excitabilidad/plasticidad en la vía directa."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: La historia de actividad desplaza el umbral para inducir LTP/LTD (más difícil inducir LTP tras hiperactividad). ¿Qué concepto resume esto?",
+    options: [
+      "Metaplasticidad",
+      "Conducción efáptica",
+      "Desmielinización",
+      "Conectoma calloso"
+    ],
+    correct: 0,
+    feedback: "Correcto: metaplasticidad = plasticidad de la plasticidad; el umbral depende del estado previo de la red."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se registra una respuesta sináptica inhibitoria rápida mediada por Cl−. ¿Qué receptor es el principal candidato?",
+    options: [
+      "GABA-A",
+      "GABA-B",
+      "mGluR",
+      "D2"
+    ],
+    correct: 0,
+    feedback: "Correcto: GABA-A es ionotrópico y conduce Cl− generando IPSPs rápidos."
+  },
+
+  // =========================
+  // Tallo (20)
+  // =========================
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Varón de 59 años con hemiparesia derecha y parálisis del III izquierdo (ptosis, ojo “down and out”). No hay ataxia. ¿Qué síndrome troncal es más probable?",
+    options: [
+      "Weber (mesencéfalo ventral)",
+      "Claude (mesencéfalo tegmental)",
+      "Wallenberg (bulbo lateral)",
+      "Foville (puente dorsal)"
+    ],
+    correct: 0,
+    feedback: "Correcto: Weber combina III ipsilateral con hemiparesia contralateral por lesión del pedúnculo cerebral."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Parálisis del III ipsilateral con temblor/ataxia contralateral por afectación rubral. ¿Qué síndrome describe mejor esta combinación?",
+    options: [
+      "Benedikt",
+      "Millard-Gubler",
+      "Dejerine (bulbar medial)",
+      "Parinaud"
+    ],
+    correct: 0,
+    feedback: "Correcto: Benedikt implica III ipsilateral + signos rubrales/ataxia contralateral por tegmento mesencefálico."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Disfagia, disfonía, pérdida de dolor/temperatura facial ipsilateral y corporal contralateral, Horner ipsilateral. ¿Localización más probable?",
+    options: [
+      "Bulbo lateral (Wallenberg)",
+      "Bulbo medial",
+      "Puente ventral bilateral",
+      "Mesencéfalo dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: patrón clásico de Wallenberg por compromiso de núcleo ambiguo, espinotalámico, espinal del V y simpático descendente."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Hemiparesia contralateral + pérdida de vibración/propiocepción contralateral + desviación lingual ipsilateral con atrofia. ¿Qué territorio sugiere?",
+    options: [
+      "Bulbo medial (síndrome de Dejerine)",
+      "Bulbo lateral",
+      "Puente lateral",
+      "Mesencéfalo ventral"
+    ],
+    correct: 0,
+    feedback: "Correcto: bulbo medial compromete pirámide (motor), lemnisco medial y núcleo/raíz del XII."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Paciente comatoso. Pupilas reactivas, pero reflejo oculocefálico ausente. TAC sugiere lesión pontina. ¿Qué circuito evalúa principalmente el oculocefálico?",
+    options: [
+      "VOR troncal (núcleos vestibulares ↔ III/VI vía FLM)",
+      "Corteza frontal ocular",
+      "Hipocampo–fórnix",
+      "Vía nigroestriada"
+    ],
+    correct: 0,
+    feedback: "Correcto: el reflejo oculocefálico depende de integridad del VOR a nivel troncal (vestibular–FLM–oculomotor)."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: 'Locked-in': cuadriplejia y anartria con conciencia preservada; movimientos verticales oculares conservados. ¿Qué estructura está típicamente lesionada?",
+    options: [
+      "Base pontina ventral bilateral",
+      "Tálamo intralaminar bilateral",
+      "Bulbo lateral",
+      "Corteza motora bilateral"
+    ],
+    correct: 0,
+    feedback: "Correcto: lesión ventral pontina interrumpe corticobulbar/corticoespinal, preservando ARAS y mirada vertical (mesencéfalo)."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Pupilas puntiformes reactivas y hemiparesia contralateral. ¿Qué lesión aguda del tronco lo hace más plausible?",
+    options: [
+      "Hemorragia pontina",
+      "Infarto occipital",
+      "Lesión cerebelosa hemisférica aislada",
+      "Lesión temporal anterior"
+    ],
+    correct: 0,
+    feedback: "Correcto: daño pontino puede interrumpir simpático descendente (miosis) y vías motoras compactas."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Nistagmo gaze-evoked, dismetría sacádica y ataxia. Head impulse negativo. ¿Qué localización tronco-cerebelosa es más probable?",
+    options: [
+      "Lesión central (cerebelo/tegmento) más que periférica",
+      "Lesión del VIII periférico",
+      "Lesión del nervio VI",
+      "Lesión del ganglio cervical superior"
+    ],
+    correct: 0,
+    feedback: "Correcto: head impulse negativo con signos oculomotores cerebelosos favorece origen central."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Parálisis de mirada horizontal hacia la derecha con preservación de convergencia y de movimientos verticales. ¿Qué estructura es más probable que esté lesionada?",
+    options: [
+      "PPRF derecha o núcleo abducens derecho",
+      "FLM derecho",
+      "Núcleo intersticial rostral del FLM (riMLF)",
+      "Colículo inferior"
+    ],
+    correct: 0,
+    feedback: "Correcto: la mirada horizontal conjugada depende de PPRF/núcleo VI; convergencia preservada no excluye lesión pontina horizontal."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: INO bilateral con exotropía (“WEBINO”). ¿Cuál sustrato anatómico explica mejor el cuadro?",
+    options: [
+      "Lesión bilateral del FLM",
+      "Lesión bilateral del núcleo del VI",
+      "Lesión del riMLF",
+      "Lesión del núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la INO se origina en FLM; bilateral puede dar WEBINO con limitación de aducción y exotropía."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Hipoacusia no completa por lesión troncal unilateral. ¿Qué principio explica la preservación parcial auditiva central?",
+    options: [
+      "Bilateralidad temprana de la vía auditiva ascendente",
+      "Decusación tardía única en tálamo",
+      "Ausencia de relevo bulbar",
+      "Proyección auditiva solo ipsilateral"
+    ],
+    correct: 0,
+    feedback: "Correcto: la vía auditiva se vuelve bilateral desde etapas tempranas (complejo olivar superior), amortiguando déficits unilaterales."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Trastorno de conciencia con lesión paramediana mesencefálica. ¿Qué sistema se compromete típicamente?",
+    options: [
+      "ARAS (formación reticular ascendente)",
+      "Lemnisco medial",
+      "Tracto espinotalámico únicamente",
+      "Núcleo dentado"
+    ],
+    correct: 0,
+    feedback: "Correcto: el tegmento mesencefálico alberga nodos del ARAS; lesiones bilaterales pueden causar coma."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Ataxia y disartria con pérdida de dolor/temperatura contralateral corporal, sin disfagia. Se sospecha lesión pontina lateral. ¿Qué tracto explica la pérdida termoalgésica corporal?",
+    options: [
+      "Tracto espinotalámico",
+      "Lemnisco medial",
+      "FLM",
+      "Tracto corticoespinal dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el espinotalámico (anterolateral) asciende en región lateral del tronco y lleva dolor/temperatura contralaterales."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Lesión del núcleo vestibular lateral (Deiters). ¿Qué vía descendente se afectaría con más probabilidad, alterando postura?",
+    options: [
+      "Vestíbulo-espinal lateral",
+      "Corticoespinal lateral",
+      "Rubroespinal",
+      "Tectoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el núcleo vestibular lateral origina la vía vestíbulo-espinal lateral para tono extensor y postura."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Disfagia severa y tos débil con aspiración. ¿Qué centro integrador bulbar es más relevante para coordinación deglutoria?",
+    options: [
+      "NTS y red bulbar de patrones (CPG) con núcleo ambiguo",
+      "Colículo superior",
+      "Núcleos cocleares",
+      "Núcleo rojo"
+    ],
+    correct: 0,
+    feedback: "Correcto: deglución depende de aferencias al NTS y salida motora desde núcleo ambiguo coordinada por redes bulbares."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Lesión del núcleo espinal del trigémino derecho. ¿Qué déficit facial esperarías?",
+    options: [
+      "Pérdida de dolor y temperatura en hemicara derecha",
+      "Pérdida de vibración en hemicara derecha",
+      "Debilidad de músculos faciales derechos",
+      "Hipoacusia derecha"
+    ],
+    correct: 0,
+    feedback: "Correcto: el núcleo espinal del V procesa dolor/temperatura facial ipsilateral."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Trastorno respiratorio con lesión ventrolateral bulbar. ¿Qué generador de ritmo es especialmente relevante?",
+    options: [
+      "Complejo preBötzinger",
+      "PPRF",
+      "riMLF",
+      "Núcleo coclear dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el complejo preBötzinger en bulbo ventrolateral es clave para el ritmo respiratorio."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Parálisis facial periférica ipsilateral con hemiparesia contralateral por lesión pontina ventral. ¿Qué síndrome lo describe mejor?",
+    options: [
+      "Millard-Gubler",
+      "Wallenberg",
+      "Claude",
+      "Parinaud"
+    ],
+    correct: 0,
+    feedback: "Correcto: Millard-Gubler (puente ventral) combina VII ipsilateral con hemiparesia contralateral por tractos corticospinales."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Parálisis de mirada vertical con pupilas que responden a convergencia pero poco a luz (disociación luz-cerca). ¿Qué síndrome dorsal mesencefálico sugiere?",
+    options: [
+      "Parinaud",
+      "Weber",
+      "Dejerine bulbar",
+      "Foville"
+    ],
+    correct: 0,
+    feedback: "Correcto: Parinaud por lesión dorsal mesencefálica (área pretectal/colículos) afecta mirada vertical y reflejos pupilares."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Lesión del lemnisco medial en puente izquierdo. ¿Qué modalidad sensitiva se afecta más y en qué lado corporal?",
+    options: [
+      "Propiocepción/vibración del lado derecho",
+      "Dolor/temperatura del lado izquierdo",
+      "Audición del lado izquierdo",
+      "Gusto del lado derecho"
+    ],
+    correct: 0,
+    feedback: "Correcto: lemnisco medial ya cruzó en bulbo; lesión pontina izquierda produce déficit lemniscal contralateral (derecho)."
+  },
+
+  // =========================
+  // Cerebelo (18)
+  // =========================
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Ataxia troncal severa con base amplia y oscilación del tronco; extremidades relativamente mejor. ¿Qué región cerebelosa es más probable que esté afectada?",
+    options: [
+      "Vermis (spinocerebelo)",
+      "Hemisferio lateral (cerebrocerebelo)",
+      "Flóculo exclusivamente",
+      "Núcleo dentado aislado"
+    ],
+    correct: 0,
+    feedback: "Correcto: el vermis controla musculatura axial y marcha; su lesión produce ataxia troncal."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Dismetría en dedo-nariz y temblor de intención en brazo derecho, con marcha relativamente conservada. ¿Qué lado cerebeloso se afecta con mayor probabilidad?",
+    options: [
+      "Hemisferio cerebeloso derecho",
+      "Hemisferio cerebeloso izquierdo",
+      "Vermis",
+      "Lesión talámica izquierda exclusivamente"
+    ],
+    correct: 0,
+    feedback: "Correcto: los déficits apendiculares cerebelosos suelen ser ipsilaterales por doble decusación de los circuitos."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Nistagmo gaze-evoked y dificultad para mantener mirada excéntrica (drift con sacadas de corrección). ¿Qué función cerebelosa está alterada?",
+    options: [
+      "Integrador neural ocular (flóculo/paraflóculo)",
+      "Generador de sacadas horizontal (PPRF)",
+      "Reflejo fotomotor (pretecto)",
+      "Control corticospinal directo"
+    ],
+    correct: 0,
+    feedback: "Correcto: flóculo/paraflóculo contribuyen a mantener posiciones oculares; su disfunción produce gaze-evoked nystagmus."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Sacadas hipermétricas y oscilaciones oculomotoras con ataxia. ¿Qué subregión es especialmente relevante para calibración de sacadas?",
+    options: [
+      "Vermis oculomotor y núcleo fastigio",
+      "Núcleo coclear",
+      "Núcleo ambiguo",
+      "Caudado dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el vermis oculomotor y fastigio ajustan amplitud y precisión de sacadas."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: VOR con ganancia reducida y mala adaptación a prismas; vértigo posicional central. ¿Qué lóbulo cerebeloso es más implicado?",
+    options: [
+      "Floculonodular (vestibulocerebelo)",
+      "Anterior lobe exclusivamente",
+      "Hemisferio posterior lateral exclusivamente",
+      "Núcleo interpuesto aislado"
+    ],
+    correct: 0,
+    feedback: "Correcto: flóculo/nódulo modulan VOR y equilibrio mediante conexiones con núcleos vestibulares."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Lesión del pedúnculo cerebeloso superior izquierdo. ¿Qué tipo de señal se afecta predominantemente?",
+    options: [
+      "Salida cerebelosa eferente hacia tálamo/mesencéfalo",
+      "Entrada pontocerebelosa desde corteza",
+      "Entrada olivocerebelosa",
+      "Entrada vestibular exclusiva"
+    ],
+    correct: 0,
+    feedback: "Correcto: el pedúnculo superior lleva la mayor parte de eferencias desde núcleos profundos hacia tálamo/rubro."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Lesión del pedúnculo medio derecho. ¿Qué manifestación es más consistente?",
+    options: [
+      "Ataxia ipsilateral por pérdida de aferencias pontocerebelosas",
+      "Hemianopsia contralateral",
+      "Afasia de conducción",
+      "Parálisis facial periférica aislada"
+    ],
+    correct: 0,
+    feedback: "Correcto: el pedúnculo medio transporta fibras pontocerebelosas; su lesión compromete coordinación ipsilateral."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Daño del pedúnculo inferior derecho con pérdida de aferencias propioceptivas y vestibulares. ¿Qué patrón clínico es más probable?",
+    options: [
+      "Ataxia ipsilateral con inestabilidad y signos vestibulares",
+      "Hemiparesia contralateral",
+      "Afasia global",
+      "Negligencia espacial"
+    ],
+    correct: 0,
+    feedback: "Correcto: el pedúnculo inferior lleva entradas vestibulares/olivares/espinocerebelosas, produciendo ataxia ipsilateral."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Disartria atáxica con habla escandida y prosodia irregular. ¿Qué principio explica la alteración del habla?",
+    options: [
+      "Fallo en temporización y coordinación de musculatura bulbar por circuitos cerebelosos",
+      "Parálisis del núcleo ambiguo por lesión periférica del X",
+      "Lesión del fascículo arcuato",
+      "Lesión del NTS"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cerebelo ajusta timing motor fino; su disfunción altera la coordinación articulatoria."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Síndrome cognitivo-afectivo cerebeloso (apatía, disfunción ejecutiva, alteración visuoespacial) tras lesión en hemisferios posteriores. ¿Qué conectividad lo sustenta?",
+    options: [
+      "Loops dentado–tálamo–prefrontal/parietal",
+      "Tracto espinotalámico",
+      "Núcleo ambiguo–vago",
+      "Radiaciones ópticas"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cerebelo posterior participa en redes cognitivas mediante salidas del dentado hacia tálamo y corteza asociativa."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Aprendizaje motor deteriorado en tarea de adaptación (prismas) sin debilidad. ¿Qué señal instructiva es crítica para corrección por error?",
+    options: [
+      "Fibras trepadoras desde oliva inferior",
+      "Fibras corticoespinales",
+      "Radiaciones ópticas",
+      "Fibras del fórnix"
+    ],
+    correct: 0,
+    feedback: "Correcto: la oliva inferior aporta señal de error por fibras trepadoras para ajuste sináptico en Purkinje."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Lesión que reduce la inhibición de Purkinje sobre núcleos profundos. ¿Qué cambio fisiológico esperas en la salida cerebelosa?",
+    options: [
+      "Aumento de actividad de núcleos profundos (desinhibición)",
+      "Disminución obligatoria de toda salida cerebelosa por pérdida de excitación",
+      "Conversión a señalización eléctrica",
+      "Bloqueo de vías vestibulares por completo"
+    ],
+    correct: 0,
+    feedback: "Correcto: Purkinje son inhibitorias; su pérdida desinhibe núcleos profundos, alterando patrones de salida y coordinación."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Temblor de intención y dismetría sugieren compromiso de qué vía de salida principal del cerebelo hacia corteza motora?",
+    options: [
+      "Dentato–rubro–talámica",
+      "Vestíbulo-espinal lateral",
+      "Retículo-espinal medial",
+      "Tracto mamilotalámico"
+    ],
+    correct: 0,
+    feedback: "Correcto: la vía dentato–rubro–talámica conecta cerebelo con tálamo motor y corteza para coordinación y corrección de error."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Lesión del lóbulo anterior cerebeloso con marcada ataxia de marcha y piernas, en contexto de alcohol crónico. ¿Qué sustrato es más típico?",
+    options: [
+      "Degeneración preferente de vermis/anterior lobe (spinocerebelo)",
+      "Degeneración primaria de núcleo caudado",
+      "Lesión aislada de flóculo",
+      "Infarto de esplenio calloso"
+    ],
+    correct: 0,
+    feedback: "Correcto: alcoholismo crónico se asocia a atrofia del vermis/anterior lobe, afectando marcha y control axial."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Hipotonía ipsilateral y rebote (Stewart-Holmes) positivo en brazo. ¿Qué función cerebelosa está más comprometida?",
+    options: [
+      "Frenado predictivo y coordinación agonista–antagonista",
+      "Inervación directa del músculo por motoneuronas",
+      "Conducción sensitiva lemniscal",
+      "Reflejo pupilar parasimpático"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cerebelo calibra frenado y co-contracción; su falla produce rebote e hipotonía."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Ataxia marcada sin debilidad, con disdiadococinesia y descomposición del movimiento. ¿Qué concepto de control describe mejor el rol cerebeloso?",
+    options: [
+      "Modelo interno predictivo (control feedforward) ajustado por error",
+      "Generador primario de fuerza",
+      "Centro único de recompensa dopaminérgica",
+      "Relevo exclusivo de dolor"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cerebelo actúa como modelo predictivo para temporización y corrección, no como generador primario de fuerza."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Deterioro de condición de parpadeo (eyeblink conditioning). ¿Qué estructura es indispensable para la señal instructiva y el aprendizaje?",
+    options: [
+      "Circuitos cerebelosos con oliva inferior y núcleos profundos",
+      "Arcuato",
+      "Cuerpo calloso",
+      "Núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: el condicionamiento de parpadeo es paradigma clásico dependiente de cerebelo (error olivar) y núcleos profundos."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Lesión del núcleo fastigio. ¿Qué dominio motor se altera con mayor probabilidad?",
+    options: [
+      "Postura y locomoción (control axial) mediante vías vestibulo/reticuloespinales",
+      "Lenguaje semántico",
+      "Audición primaria",
+      "Memoria episódica"
+    ],
+    correct: 0,
+    feedback: "Correcto: fastigio integra salida del vermis hacia sistemas posturales del tronco para control axial y marcha."
+  },
+
+  // =========================
+  // Capas de la Corteza (18)
+  // =========================
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión focal que destruye predominantemente capa IV en S1. ¿Qué tipo de entrada se vería más afectada inicialmente?",
+    options: [
+      "Aferencias talamocorticales específicas hacia corteza granular",
+      "Proyecciones corticospinales",
+      "Proyecciones corticotalámicas",
+      "Proyecciones callosas posteriores"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa IV es receptora clave de aferencias talámicas específicas en corteza sensorial primaria."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión selectiva de capa V en M1. ¿Cuál déficit se esperaría con mayor probabilidad?",
+    options: [
+      "Disminución del drive motor descendente (corticospinal/corticobulbar)",
+      "Pérdida primaria de entrada talámica sensorial",
+      "Ceguera cortical",
+      "Aprosodia emocional aislada"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa V contiene neuronas piramidales de salida hacia tronco y médula; su daño reduce ejecución motora."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Red de predictive coding: tras lesión de capas profundas (V/VI) en un área sensorial primaria, el paciente muestra dificultad para suprimir respuestas ante estímulos repetidos y falla en modulación por contexto. ¿Qué función laminar se alteró?",
+    options: [
+      "Señales de feedback/predicción y control de ganancia",
+      "Señales feedforward de error exclusivamente",
+      "Conducción saltatoria",
+      "Transmisión por volumen dopaminérgica"
+    ],
+    correct: 0,
+    feedback: "Correcto: capas profundas se asocian a feedback/predicciones y modulación contextual de circuitos locales."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Corteza motora primaria agranular: ¿qué rasgo citoarquitectónico explica el término?",
+    options: [
+      "Capa IV pobre o casi ausente",
+      "Ausencia de capa I",
+      "Ausencia de interneuronas",
+      "Ausencia de sustancia blanca subyacente"
+    ],
+    correct: 0,
+    feedback: "Correcto: en M1 la capa IV es reducida; en contraste, cortezas sensoriales primarias son granulares con IV prominente."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Privación sensorial temprana altera cierre de período crítico y produce hiperexcitabilidad. ¿Qué elemento inhibitorio se asocia clásicamente a maduración y cierre del período crítico?",
+    options: [
+      "Interneuronas PV y redes perineuronales",
+      "Purkinje y fibras trepadoras",
+      "Núcleo ambiguo",
+      "Tracto corticoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: maduración PV y perineuronal nets contribuyen a estabilización del balance E/I y cierre del período crítico."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Se estimula una vía corticocortical de orden superior (área asociativa → primaria). ¿En qué capas tiende a terminar el feedback?",
+    options: [
+      "Capas I y VI principalmente",
+      "Capa IV exclusivamente",
+      "Solo capa V",
+      "Solo sustancia blanca sin sinapsis cortical"
+    ],
+    correct: 0,
+    feedback: "Correcto: feedback suele terminar en capas superficiales/profundas (I/VI), modulando dendritas apicales y estado de red."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Un input feedforward (área primaria → secundaria) se asocia con terminación preferente en:",
+    options: [
+      "Capas medias (incluida IV) de la corteza destino",
+      "Capa I exclusivamente",
+      "Capa VI exclusivamente",
+      "Solo subcorteza sin sinapsis cortical"
+    ],
+    correct: 0,
+    feedback: "Correcto: feedforward suele terminar en capas medias, alineado con circuitos granulares receptores de entrada."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión focal en capa VI reduce modulación corticotalámica y altera husos del sueño. ¿Qué estructura talámica actúa como 'gate' inhibitorio en estos ritmos?",
+    options: [
+      "Núcleo reticular del tálamo (GABAérgico)",
+      "VPL",
+      "Pulvinar",
+      "Cuerpo geniculado medial"
+    ],
+    correct: 0,
+    feedback: "Correcto: el núcleo reticular del tálamo inhibe núcleos talámicos y participa en husos de sueño y control atencional."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Daño selectivo de dendritas apicales en capa I disminuye integración de señales contextuales. ¿Qué estructura dendrítica se ve más afectada?",
+    options: [
+      "Tuft apical de piramidales de capas V/VI",
+      "Axón inicial de piramidales",
+      "Somata de capa IV",
+      "Glomérulos cerebelosos"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa I aloja tufts apicales que reciben feedback y neuromodulación, fundamentales para integración contextual."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Paciente con crisis focales originadas en corteza displásica con alteración del microcircuito laminar. ¿Qué principio laminar ayuda a explicar propagación local rápida?",
+    options: [
+      "Conectividad recurrente local (supragranular y profunda) que amplifica actividad",
+      "Ausencia total de sinapsis inhibitorias",
+      "Conducción exclusivamente por uniones gap",
+      "Fallo primario del lemnisco medial"
+    ],
+    correct: 0,
+    feedback: "Correcto: la corteza tiene bucles recurrentes excitatorios e inhibitorios; su desbalance facilita propagación y sincronización."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión en corteza insular anterior agranular causa alteración autonómica/afectiva (interocepción). ¿Qué organización describe mejor la ínsula?",
+    options: [
+      "Gradiente anterior agranular (más límbico/autonómico) → posterior granular (más sensorial)",
+      "Únicamente granular en toda su extensión",
+      "Únicamente agranular en toda su extensión",
+      "Sin gradientes citoarquitectónicos"
+    ],
+    correct: 0,
+    feedback: "Correcto: la ínsula muestra gradiente citoarquitectónico correlacionado con funciones autonómicas vs sensoriales."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión del ACC se manifiesta con abulia y pobre monitoreo de conflicto. ¿Qué rol funcional es más atribuible al ACC?",
+    options: [
+      "Control cognitivo-motivacional y acoplamiento autonómico",
+      "Procesamiento visual foveal",
+      "Generación de sacadas horizontales",
+      "Inervación directa laríngea"
+    ],
+    correct: 0,
+    feedback: "Correcto: ACC integra control, motivación y respuestas autonómicas; su disfunción produce abulia y pobre control de conflicto."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Una lesión que afecta capas II/III de un área asociativa reduce conectividad interareal. ¿Qué función es más típica de II/III?",
+    options: [
+      "Proyecciones corticocorticales horizontales e interareales",
+      "Salida corticospinal principal",
+      "Entrada talámica específica exclusiva",
+      "Control pupilar parasimpático"
+    ],
+    correct: 0,
+    feedback: "Correcto: capas II/III soportan conectividad corticocortical y comunicación entre áreas."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión en corteza visual primaria con afectación de 'estría de Gennari'. ¿Qué término arquitectónico se asocia a esta característica?",
+    options: [
+      "Koniocorteza (capa IV muy desarrollada)",
+      "Agranularidad",
+      "Alocorteza",
+      "Mesencéfalo dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: V1 es koniocorteza con capa IV prominente y estría de Gennari (fibras mielínicas)."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Se observa predominio de inhibición dendrítica que controla integración de inputs apicales. ¿Qué interneurona es más típica de este rol?",
+    options: [
+      "SST",
+      "PV",
+      "Motoneuronas alfa",
+      "Purkinje"
+    ],
+    correct: 0,
+    feedback: "Correcto: interneuronas SST suelen apuntar a dendritas distales y regulan integración de entradas apicales."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión de FEF causa dificultad para generar sacadas voluntarias contralaterales. ¿Qué proyección troncal es un paso funcional clave para sacadas horizontales?",
+    options: [
+      "FEF → PPRF",
+      "FEF → NTS",
+      "FEF → núcleo ambiguo",
+      "FEF → oliva inferior"
+    ],
+    correct: 0,
+    feedback: "Correcto: FEF envía señales a PPRF para generar sacadas horizontales voluntarias."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Déficit selectivo en supresión de estímulos irrelevantes por falla de 'gating' talámico. ¿Qué circuito es más directamente responsable?",
+    options: [
+      "Corteza ↔ tálamo ↔ núcleo reticular talámico",
+      "Hipocampo ↔ fórnix ↔ mamilares",
+      "Cerebelo ↔ oliva inferior",
+      "Núcleos cocleares ↔ colículo inferior"
+    ],
+    correct: 0,
+    feedback: "Correcto: el núcleo reticular talámico regula el flujo talamocortical, modulando atención y estados de sueño-vigilia."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Un estímulo neuromodulador difuso aumenta la ganancia de redes corticales sin generar EPSPs rápidos punto-a-punto. ¿Qué tipo de señalización es más coherente?",
+    options: [
+      "Transmisión por volumen (neuromodulación)",
+      "Conducción saltatoria",
+      "Reflejo monosimpático",
+      "Vía lemniscal"
+    ],
+    correct: 0,
+    feedback: "Correcto: neuromoduladores (DA/NA/5-HT) operan de forma difusa, ajustando ganancia y plasticidad más que EPSPs rápidos."
+  },
+
+  // =========================
+  // Vascular (18)
+  // =========================
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Mujer de 72 años con hemiparesia pura izquierda sin signos corticales. RM muestra infarto lacunar en cápsula interna derecha. ¿Qué vasos suelen estar implicados?",
+    options: [
+      "Arterias lenticuloestriadas (perforantes profundas de ACM)",
+      "Arterias corticales de PCA",
+      "Arterias meníngeas medias",
+      "Arterias cerebelosas superiores"
+    ],
+    correct: 0,
+    feedback: "Correcto: perforantes lenticuloestriadas irrigan cápsula interna y ganglios basales; su oclusión causa síndromes lacunares."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Paciente con hemianopsia homónima contralateral y hemiparesia contralateral en tríada profunda. Se sospecha síndrome de arteria coroidea anterior. ¿Qué estructura adicional explica la hemianopsia?",
+    options: [
+      "Radiaciones ópticas/tracto óptico en territorio coroideo anterior",
+      "Núcleo ambiguo",
+      "Núcleos cocleares",
+      "Flóculo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la coroidea anterior puede irrigar porciones de radiaciones ópticas/tracto óptico además de cápsula interna."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Infarto ACA derecho: debilidad predominante de pierna izquierda y abulia/incontinencia. ¿Qué superficie cortical se compromete típicamente?",
+    options: [
+      "Superficie medial frontal-parietal (área motora/sensitiva de pierna y cíngulo)",
+      "Superficie lateral temporal posterior",
+      "Corteza occipital medial",
+      "Ínsula posterior exclusiva"
+    ],
+    correct: 0,
+    feedback: "Correcto: ACA irriga superficie medial; afecta representación de pierna y regiones motivacionales mediales."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Afasia de Broca con hemiparesia derecha tras evento isquémico. ¿Qué división de ACM es más probable?",
+    options: [
+      "División superior de ACM izquierda",
+      "División inferior de ACM izquierda",
+      "PCA izquierda",
+      "ACA izquierda"
+    ],
+    correct: 0,
+    feedback: "Correcto: la división superior irriga IFG/opérculo frontal (Broca) y áreas motoras laterales."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Afasia fluente (Wernicke), hemianopsia derecha y pobre conciencia del déficit. ¿Qué territorio arterial encaja mejor?",
+    options: [
+      "ACM inferior izquierda",
+      "ACA izquierda",
+      "PICA izquierda",
+      "AICA derecha"
+    ],
+    correct: 0,
+    feedback: "Correcto: ACM inferior dominante irriga temporal posterior/parietal inferior y radiaciones ópticas posteriores."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Alexia sin agrafia tras infarto PCA izquierda. ¿Qué estructura adicional suele requerirse para el síndrome completo?",
+    options: [
+      "Compromiso de esplenio calloso",
+      "Compromiso de núcleo ambiguo",
+      "Compromiso de pedúnculo cerebeloso superior",
+      "Compromiso de núcleo rojo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la lesión occipital dominante + desconexión esplenial impiden que la información visual llegue a redes lingüísticas."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Síndrome bulbar lateral tras oclusión PICA/vertebral: disfagia, vértigo, Horner ipsilateral. ¿Qué núcleo explica la disfagia?",
+    options: [
+      "Núcleo ambiguo",
+      "Núcleo hipogloso",
+      "Núcleos cocleares",
+      "Núcleo caudado"
+    ],
+    correct: 0,
+    feedback: "Correcto: el núcleo ambiguo contiene motoneuronas para músculos faríngeo-laríngeos (IX/X)."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Hipoacusia súbita con vértigo y ataxia por infarto de AICA. ¿Qué vaso pequeño explica hipoacusia severa periférica en este contexto?",
+    options: [
+      "Arteria laberíntica",
+      "Arteria coroidea anterior",
+      "Arterias lenticuloestriadas",
+      "Arteria pericallosa"
+    ],
+    correct: 0,
+    feedback: "Correcto: la arteria laberíntica (frecuente rama de AICA) irriga el oído interno; su isquemia causa hipoacusia/vertigo."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Infarto paramediano talámico bilateral con somnolencia y alteración de memoria; a veces signos mesencefálicos. ¿Qué variante arterial es típica?",
+    options: [
+      "Arteria de Percheron",
+      "ACoA",
+      "SCA",
+      "AICA"
+    ],
+    correct: 0,
+    feedback: "Correcto: la arteria de Percheron puede irrigar ambos tálamos paramedianos y parte del mesencéfalo rostral."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Hemorragia putaminal en paciente con HTA crónica. ¿Qué patología de vasos pequeños es el mecanismo típico?",
+    options: [
+      "Lipohialinosis/microangiopatía hipertensiva de perforantes",
+      "Embolia cardioembólica",
+      "Vasculitis de grandes vasos",
+      "Trombosis venosa cerebral"
+    ],
+    correct: 0,
+    feedback: "Correcto: HTA crónica produce lipohialinosis en perforantes (lenticuloestriadas), predisponiendo a hemorragias profundas."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Hemorragia talámica con alteración sensitiva y hemiparesia por compromiso capsular. ¿Qué vecindad anatómica lo permite?",
+    options: [
+      "Tálamo adyacente a cápsula interna",
+      "Tálamo adyacente a corteza calcarina",
+      "Tálamo adyacente al flóculo",
+      "Tálamo adyacente al núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la cápsula interna está inmediatamente lateral al tálamo; la hemorragia talámica puede invadir fibras motoras/sensitivas."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Trombosis venosa cerebral: cefalea, convulsiones y edema hemorrágico no territorial. ¿Qué patrón radiológico/clinico es más característico?",
+    options: [
+      "Infartos hemorrágicos que no respetan territorios arteriales y se asocian a crisis",
+      "Déficit focal puro sin cefalea",
+      "Síndrome lacunar motor puro",
+      "Hemianopsia aislada sin edema"
+    ],
+    correct: 0,
+    feedback: "Correcto: la fisiopatología venosa produce congestión, edema y hemorragia en distribución atípica, frecuentemente con convulsiones."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Hipoperfusión sistémica por choque; aparece debilidad proximal y alteración cognitiva leve con lesiones en frontera ACA-MCA. ¿Qué tipo de infarto es este?",
+    options: [
+      "Watershed (zona de frontera) por hipoperfusión",
+      "Cardioembólico de gran vaso",
+      "Lacunar perforante",
+      "Hemorrágico hipertensivo"
+    ],
+    correct: 0,
+    feedback: "Correcto: hipoperfusión afecta territorios distales entre grandes arterias (watershed), con patrones clínicos específicos."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Oclusión de punta de basilar produce alteración de conciencia y signos oculomotores. ¿Qué estructuras se comprometen con frecuencia?",
+    options: [
+      "Mesencéfalo rostral y tálamos",
+      "Corteza occipital aislada",
+      "Bulbo lateral aislado",
+      "Cerebelo floculonodular aislado"
+    ],
+    correct: 0,
+    feedback: "Correcto: la punta de basilar irriga mesencéfalo/tálamo; el compromiso del ARAS y núcleos oculomotores explica el cuadro."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Hemianopsia homónima contralateral sin debilidad, con preservación de lenguaje; lesión en calcarina. ¿Qué arteria es la más probable?",
+    options: [
+      "PCA",
+      "ACA",
+      "ACM superior",
+      "PICA"
+    ],
+    correct: 0,
+    feedback: "Correcto: la PCA irriga corteza visual primaria (calcarina); déficit visual aislado sugiere territorio PCA."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Síndrome de SCA: ataxia ipsilateral con signos de tronco. ¿Qué región cerebelosa/pedúnculo puede estar comprometida?",
+    options: [
+      "Cerebelo superior y pedúnculo superior",
+      "Cerebelo inferior exclusivo",
+      "Hemisferio temporal",
+      "Cíngulo anterior"
+    ],
+    correct: 0,
+    feedback: "Correcto: SCA irriga cerebelo superior y puede involucrar pedúnculo superior, afectando salida cerebelosa."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Un aneurisma comunicante posterior puede presentarse con parálisis del III. ¿Qué fibras del III se afectan primero en compresión?",
+    options: [
+      "Parasimpáticas pupilares superficiales",
+      "Somáticas profundas para extraoculares",
+      "Fibras del II",
+      "Fibras del IV"
+    ],
+    correct: 0,
+    feedback: "Correcto: las fibras parasimpáticas pupilares suelen ser superficiales y vulnerables a compresión externa → midriasis temprana."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Disección vertebral con infarto bulbar lateral. ¿Qué rasgo clínico ayuda a diferenciarlo de un infarto cortical grande?",
+    options: [
+      "Combinación de signos cruzados troncoencefálicos (cara ipsilateral, cuerpo contralateral)",
+      "Afasia global típica",
+      "Apraxia ideomotora aislada",
+      "Hemianopsia con preservación de tronco"
+    ],
+    correct: 0,
+    feedback: "Correcto: los síndromes troncoencefálicos producen signos cruzados por vecindad de núcleos y tractos ya decusados/no decusados."
+  },
+
+  // =========================
+  // Ganglios Basales (18)
+  // =========================
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Varón de 63 años con bradicinesia y rigidez; mejoría con levodopa. ¿Qué cambio en la salida del GPi se espera en Parkinson no tratado?",
+    options: [
+      "Aumento de inhibición tónica hacia tálamo (↑salida GPi)",
+      "Disminución de inhibición tónica hacia tálamo (↓salida GPi)",
+      "Abolición de la vía hiperdirecta",
+      "Aumento de salida excitatoria al tálamo"
+    ],
+    correct: 0,
+    feedback: "Correcto: en Parkinson aumenta la salida inhibitoria del GPi al tálamo, reduciendo drive tálamo-cortical y causando bradicinesia."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Hemibalismo súbito del hemicuerpo derecho. RM muestra lesión pequeña en región subtalámica izquierda. ¿Cuál es el mecanismo funcional principal?",
+    options: [
+      "Pérdida de excitación del STN al GPi → ↓inhibición talámica",
+      "Aumento de actividad del STN al GPi → ↑inhibición talámica",
+      "Aumento de dopamina nigroestriada",
+      "Lesión del dentado"
+    ],
+    correct: 0,
+    feedback: "Correcto: STN excita GPi; su lesión reduce freno talámico y facilita movimientos hipercinéticos contralaterales."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Corea progresiva con deterioro cognitivo y atrofia estriatal. En fases tempranas, ¿qué subpoblación estriatal se degenera preferentemente para producir hipercinesia?",
+    options: [
+      "Neuronas D2 de vía indirecta",
+      "Neuronas D1 de vía directa",
+      "Motoneuronas alfa",
+      "Purkinje"
+    ],
+    correct: 0,
+    feedback: "Correcto: la pérdida temprana de neuronas D2 reduce la vía indirecta (freno), facilitando hipercinesia coreica."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Distonía focal con co-contracción y pérdida de inhibición selectiva. ¿Qué concepto de organización BG explica mejor el fenómeno?",
+    options: [
+      "Fallo de 'surround inhibition' (selección de programa y supresión de competidores)",
+      "Aumento de conducción saltatoria",
+      "Lesión del NTS",
+      "Daño de radiaciones ópticas"
+    ],
+    correct: 0,
+    feedback: "Correcto: BG seleccionan acciones (foco) e inhiben competidores (surround); su disfunción favorece co-contracción distónica."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Tics motores vocales y urgencia premonitoria. ¿Qué bucle funcional está más implicado en términos de BG?",
+    options: [
+      "Bucles asociativo-límbicos cortico-estriato-talámicos",
+      "Vía dentato-rubro-talámica aislada",
+      "Circuito de Papez exclusivamente",
+      "Vía lemniscal"
+    ],
+    correct: 0,
+    feedback: "Correcto: tics se asocian a disfunción de circuitos cortico-estriato-talámicos, especialmente dominios asociativo-límbicos."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Parkinson con temblor prominente. Se discute interacción BG–cerebelo. ¿Qué principio de red es más aceptable a nivel funcional?",
+    options: [
+      "Loops BG–tálamo–corteza interactúan con loops cerebelo–tálamo–corteza, contribuyendo a oscilaciones",
+      "El temblor depende solo de médula espinal",
+      "El temblor depende solo de retina",
+      "Los BG no se conectan con tálamo"
+    ],
+    correct: 0,
+    feedback: "Correcto: temblor puede reflejar interacción de múltiples loops (BG y cerebelo) a través de tálamo y corteza."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: DBS-STN mejora bradicinesia y reduce oscilaciones beta. ¿Qué interpretación de sistema es más coherente?",
+    options: [
+      "Modulación/normalización de patrones patológicos y reducción del freno excesivo vía GPi",
+      "Abolición completa de dopamina",
+      "Estimulación directa de corticospinal",
+      "Bloqueo de vías vestibulares"
+    ],
+    correct: 0,
+    feedback: "Correcto: DBS modula actividad anómala del circuito indirecto/hiperdirecto y reduce inhibición talámica excesiva."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Lesión del GPi bilateral produce empeoramiento de hipercinesias y desinhibición motora. ¿Por qué GPi es crítico?",
+    options: [
+      "Es núcleo de salida inhibitoria tónica hacia tálamo y tronco",
+      "Es el receptor principal de aferencias talámicas",
+      "Es el generador del VOR",
+      "Es un núcleo exclusivamente sensorial"
+    ],
+    correct: 0,
+    feedback: "Correcto: GPi (junto a SNr) mantiene inhibición tónica; su daño desinhibe tálamo y facilita movimientos no deseados."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Se sospecha alteración del territorio límbico (núcleo accumbens) con impulsividad y búsqueda de recompensa. ¿Qué entrada cortical es especialmente relevante?",
+    options: [
+      "Corteza prefrontal ventromedial/orbitofrontal",
+      "Corteza calcarina",
+      "M1 mano",
+      "Núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: el estriado ventral integra señales de valor desde OFC/vmPFC y amígdala para motivación y selección."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Movimientos oculares anormales con dificultad para suprimir sacadas reflejas. ¿Qué salida BG participa directamente en control de sacadas?",
+    options: [
+      "SNr → colículo superior",
+      "GPe → VPL",
+      "Putamen → núcleos cocleares",
+      "STN → NTS"
+    ],
+    correct: 0,
+    feedback: "Correcto: SNr modula colículo superior; disfunción puede alterar inhibición de sacadas y control oculomotor."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Tratamiento con antagonista D2 empeora bradicinesia y produce rigidez. ¿Qué efecto de circuito explica esto?",
+    options: [
+      "Potencia la vía indirecta (más freno) al bloquear modulación dopaminérgica D2",
+      "Potencia la vía directa exclusivamente",
+      "Reduce la salida del GPi",
+      "Activa el riMLF"
+    ],
+    correct: 0,
+    feedback: "Correcto: bloqueo D2 elimina la reducción dopaminérgica del freno indirecto, favoreciendo aumento de inhibición talámica."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Paciente con parkinsonismo y pobre iniciación de movimientos auto-generados, pero mejor con claves externas (freezing). ¿Qué red cortical-BG se relaciona más con iniciación interna?",
+    options: [
+      "SMA–estriado (circuito motor medial)",
+      "V1–LGN",
+      "Núcleos cocleares–CGM",
+      "Hipocampo–fórnix"
+    ],
+    correct: 0,
+    feedback: "Correcto: SMA y sus bucles con BG participan en iniciación interna y secuenciación; disfunción contribuye a freezing."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: En registros, se observa actividad beta elevada que se correlaciona con rigidez. ¿Qué interpretación funcional de beta es más coherente?",
+    options: [
+      "Estado de mantenimiento/estabilidad que reduce flexibilidad para cambiar acciones",
+      "Señal específica de dolor",
+      "Señal de visión primaria",
+      "Señal exclusiva de memoria episódica"
+    ],
+    correct: 0,
+    feedback: "Correcto: beta se asocia a mantenimiento de estado y menor flexibilidad; su reducción acompaña mejora motora."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Distrofia/lesión del putamen posterolateral produce síntomas motores. ¿Qué gradiente funcional describe mejor el putamen?",
+    options: [
+      "Posterolateral más sensorimotor; anteromedial más asociativo/limbico",
+      "Posterolateral más límbico; anteromedial más visual",
+      "Uniforme sin gradientes",
+      "Solo límbico en toda su extensión"
+    ],
+    correct: 0,
+    feedback: "Correcto: el putamen tiene organización por territorios con gradientes; el sector posterolateral se asocia al dominio sensorimotor."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Un paciente con lesión del caudado presenta alteración en control ejecutivo y toma de decisiones más que en fuerza. ¿Qué dominio del caudado se asocia más a esto?",
+    options: [
+      "Territorio asociativo (con PFC dorsolateral)",
+      "Territorio visual primario",
+      "Territorio auditivo troncal",
+      "Territorio exclusivamente vestibular"
+    ],
+    correct: 0,
+    feedback: "Correcto: caudado se vincula a bucles asociativos con PFC, modulando funciones ejecutivas y selección basada en reglas."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Hipercinesia tras lesión de GPe. ¿Qué efecto de red es más esperable si GPe falla en inhibir STN?",
+    options: [
+      "Aumento de STN → aumento de GPi → hipocinesia (más freno)",
+      "Disminución de STN → disminución de GPi → hipercinesia",
+      "Aumento de dopamina SNc",
+      "Abolición de la vía directa"
+    ],
+    correct: 0,
+    feedback: "Correcto: si GPe no inhibe STN, STN aumenta su excitación sobre GPi, elevando freno talámico y tendiendo a hipocinesia."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Conducta compulsiva con agonistas dopaminérgicos en Parkinson. ¿Qué territorio estriatal es más relevante para el efecto adverso?",
+    options: [
+      "Estriado ventral (accumbens) y bucles límbicos",
+      "Putamen posterolateral",
+      "Núcleo dentado",
+      "Núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: agonistas dopaminérgicos pueden sobreestimular bucles límbicos del estriado ventral, favoreciendo impulsividad/compulsión."
+  },
+
+  // =========================
+  // Pares Craneales (resto ya cubierto) / Conectoma / Sinapsis / Tallo / Cerebelo / Capas / Vascular / BG
+  // Para completar exactamente 150, faltan 20 preguntas (repartidas aquí como “Mixtas Avanzadas” por los mismos temas).
+  // =========================
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Pérdida de la sensibilidad corneal (aferencia) bilateral con parpadeo voluntario intacto. ¿Qué región del V está más directamente implicada en aferencia corneal?",
+    options: [
+      "V1 (nasociliar) → núcleo espinal del trigémino",
+      "V2 → núcleo motor del V",
+      "V3 → núcleo mesencefálico",
+      "VII → núcleo facial"
+    ],
+    correct: 0,
+    feedback: "Correcto: la aferencia del reflejo corneal viaja por V1 y sinapsa en núcleos trigeminales (especialmente espinal)."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Dificultad para integrar señal vestibular con percepción espacial (mareo visual, dependencia visual) tras lesión insular/opercular. ¿Qué nodo cortical vestibular es clásico?",
+    options: [
+      "Ínsula/opérculo parietal (PIVC) y conectividad parieto-temporal",
+      "Calcarina",
+      "Área de Broca",
+      "Heschl"
+    ],
+    correct: 0,
+    feedback: "Correcto: la red vestibular cortical incluye PIVC en ínsula/opérculo, integrando vestibular con visión y propiocepción."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se observa aumento de respuesta NMDA y Ca2+ dendrítico con muerte neuronal por excitotoxicidad. ¿Qué intervención conceptual reduce más directamente el influjo Ca2+ patológico?",
+    options: [
+      "Reducir activación NMDA o disponibilidad de glutamato extracelular",
+      "Aumentar AMPAR",
+      "Bloquear GABA-A",
+      "Bloquear GIRK"
+    ],
+    correct: 0,
+    feedback: "Correcto: excitotoxicidad se asocia a exceso de Ca2+ (NMDA); reducir activación NMDA o glutamato extracelular es lo más directo."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Parálisis del VI ipsilateral, parálisis facial periférica ipsilateral y pérdida de dolor/temperatura contralateral. ¿Qué región del puente es más probable?",
+    options: [
+      "Puente ventrolateral (síndrome pontino lateral con VII/VI + espinotalámico)",
+      "Puente medial puro",
+      "Bulbo medial",
+      "Mesencéfalo dorsal"
+    ],
+    correct: 0,
+    feedback: "Correcto: combinación de VII/VI con espinotalámico sugiere lesión pontina lateral/ventral que involucra fascículos y tractos."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Hipermetría del reflejo vestibulo-ocular y mala supresión del VOR al fijar un blanco en movimiento (VOR cancellation). ¿Qué región es crítica para esta supresión?",
+    options: [
+      "Flóculo/paraflóculo",
+      "Vermis anterior",
+      "Núcleo interpuesto",
+      "Núcleo caudado"
+    ],
+    correct: 0,
+    feedback: "Correcto: flóculo/paraflóculo participan en calibración y supresión del VOR, integrando señales visuales y vestibulares."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Aumento de actividad noradrenérgica produce mayor señal/ruido y vigilancia. ¿Qué núcleo troncal es principal fuente de noradrenalina cortical?",
+    options: [
+      "Locus coeruleus",
+      "Núcleo rojo",
+      "Núcleo ambiguo",
+      "Oliva inferior"
+    ],
+    correct: 0,
+    feedback: "Correcto: locus coeruleus proyecta ampliamente a corteza, modulando vigilancia, atención y ganancia sináptica."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Paciente con cefalea súbita intensa y rigidez nucal; posteriormente desarrolla parálisis del III. ¿Qué evento vascular integra mejor ambos hallazgos?",
+    options: [
+      "Hemorragia subaracnoidea por aneurisma (p. ej., PCom) con compresión del III",
+      "Infarto lacunar capsular",
+      "Trombosis venosa superficial",
+      "Infarto ACA"
+    ],
+    correct: 0,
+    feedback: "Correcto: SAH aneurismática puede causar cefalea thunderclap; un aneurisma PCom puede comprimir el III y dar midriasis."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Paciente con corea unilateral leve tras infarto subcortical. La lesión está en caudado/putamen contralateral. ¿Qué principio explica la lateralidad motora?",
+    options: [
+      "Los bucles BG influyen sobre corteza motora ipsilateral a la lesión BG, afectando el hemicuerpo contralateral",
+      "Los BG controlan el mismo lado sin cruces",
+      "Los BG controlan solo músculos axiales",
+      "Los BG controlan solo pupilas"
+    ],
+    correct: 0,
+    feedback: "Correcto: BG modulan corteza del mismo hemisferio; como la corteza controla el lado contralateral, la clínica motora suele ser contralateral a la lesión BG."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Dolor facial tipo descarga en territorio V2/V3 con gatillos; examen neurológico normal. ¿Qué estructura suele ser blanco quirúrgico en descompresión microvascular?",
+    options: [
+      "Zona de entrada de la raíz del V en tronco (REZ) cerca del puente",
+      "Ganglio cervical superior",
+      "Núcleo ambiguo",
+      "Pedúnculo cerebeloso superior"
+    ],
+    correct: 0,
+    feedback: "Correcto: la neuralgia trigeminal clásica se asocia a conflicto neurovascular en la zona de entrada de la raíz (REZ) del V."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Paciente con heminegligencia y anosognosia tras lesión parietal derecha inferior. ¿Qué red es especialmente relevante para detección de saliencia y reorientación?",
+    options: [
+      "Red ventral de atención (TPJ/IFG) derecha",
+      "Red visual primaria",
+      "Red auditiva primaria",
+      "Red hipocampal exclusiva"
+    ],
+    correct: 0,
+    feedback: "Correcto: la red ventral de atención derecha (TPJ/IFG) media reorientación y saliencia; su daño se asocia a negligencia/anosognosia."
+  },
+  {
+    topic: "Sinapsis - Caso Clínico",
+    question: "Caso: Se incrementa la conductancia AMPA por fosforilación y se insertan AMPAR adicionales en PSD tras tetanización. ¿Qué fenómeno describe mejor esto?",
+    options: [
+      "Expresión postsináptica temprana de LTP",
+      "LTD presináptica",
+      "Depresión por depleción vesicular",
+      "Inhibición por GABA-B"
+    ],
+    correct: 0,
+    feedback: "Correcto: la LTP temprana suele expresarse como aumento de respuesta AMPA (más receptores y/o mayor conductancia)."
+  },
+  {
+    topic: "Tallo - Caso Clínico",
+    question: "Caso: Paciente con parálisis vertical de la mirada y retracción palpebral; pupilas con respuesta luz-cerca alterada. ¿Qué región anatómica del mesencéfalo dorsal es crítica?",
+    options: [
+      "Región pretectal/colículos superiores y comisura posterior",
+      "Pedúnculo cerebral ventral",
+      "Núcleo coclear",
+      "Bulbo medial"
+    ],
+    correct: 0,
+    feedback: "Correcto: el síndrome dorsal mesencefálico afecta circuitos pretectales/coliculares y comisura posterior para mirada vertical y reflejos pupilares."
+  },
+  {
+    topic: "Cerebelo - Caso Clínico",
+    question: "Caso: Dismetría de sacadas y oscilaciones (ocular flutter/opsoclonus) en contexto paraneoplásico. ¿Qué circuitos son más sospechosos?",
+    options: [
+      "Cerebelo (vermis/fastigio) y sus conexiones oculomotoras",
+      "Núcleo ambiguo",
+      "Radiaciones ópticas",
+      "Tracto espinotalámico"
+    ],
+    correct: 0,
+    feedback: "Correcto: alteraciones sacádicas rápidas se asocian a disfunción cerebelosa oculomotora (vermis/fastigio) y control de sacadas."
+  },
+  {
+    topic: "Capas de la Corteza",
+    question: "Caso: Lesión de capa VI reduce feedback corticotalámico y empeora atención sostenida. ¿Qué efecto sobre tálamo es más probable?",
+    options: [
+      "Alteración del 'gating' y del modo de disparo talámico (tónico/burst)",
+      "Abolición de la decusación piramidal",
+      "Activación del núcleo ambiguo",
+      "Bloqueo de la vía auditiva periférica"
+    ],
+    correct: 0,
+    feedback: "Correcto: corticotalámica (VI) modula excitabilidad y modo talámico; su disfunción altera atención y ritmos talamocorticales."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Síndrome de Dejerine bulbar medial tras oclusión de ramas paramedianas vertebrales/espinal anterior. ¿Qué estructura explica la desviación lingual ipsilateral?",
+    options: [
+      "Núcleo/raíz del XII",
+      "Núcleo ambiguo",
+      "Núcleo espinal del V",
+      "Núcleos vestibulares"
+    ],
+    correct: 0,
+    feedback: "Correcto: el XII está en bulbo medial; su compromiso produce atrofia/fasciculaciones y desviación ipsilateral de la lengua."
+  },
+  {
+    topic: "Ganglios Basales - Caso Clínico",
+    question: "Caso: Inhibición rápida de una acción inadecuada ante señal de stop. ¿Qué vía BG permite un 'freno' global rápido?",
+    options: [
+      "Vía hiperdirecta (corteza → STN → GPi/SNr)",
+      "Vía directa exclusivamente",
+      "Vía olivocerebelosa",
+      "Vía lemniscal"
+    ],
+    correct: 0,
+    feedback: "Correcto: la hiperdirecta activa STN, aumentando GPi/SNr y suprimiendo rápidamente la salida talamocortical."
+  },
+  {
+    topic: "Pares Craneales - Caso Clínico",
+    question: "Caso: Paciente con dificultad para abducir ojo derecho y además parálisis facial periférica derecha. El colículo facial está comprometido. ¿Qué estructura se rodea anatómicamente en ese sitio?",
+    options: [
+      "Fibras del VII rodean el núcleo del VI",
+      "Fibras del V rodean el núcleo del VII",
+      "Fibras del III rodean el núcleo del IV",
+      "Fibras del IX rodean el núcleo del X"
+    ],
+    correct: 0,
+    feedback: "Correcto: las fibras del facial forman el colículo facial al rodear al núcleo del VI en el puente dorsal."
+  },
+  {
+    topic: "Conectoma  - Caso Clínico",
+    question: "Caso: Daño del tracto fronto-occipital inferior izquierdo. ¿Qué perfil es más esperado?",
+    options: [
+      "Déficit semántico/anomia con disfunción de ruta ventral",
+      "Déficit motor puro",
+      "Ataxia troncal pura",
+      "Hipoacusia periférica"
+    ],
+    correct: 0,
+    feedback: "Correcto: IFOF participa en procesamiento semántico y conectividad ventral fronto-temporo-occipital."
+  },
+  {
+    topic: "Vascular - Caso Clínico",
+    question: "Caso: Infarto de territorio SCA derecho. Presenta ataxia ipsilateral y dismetría. ¿Qué pedúnculo puede estar especialmente comprometido por vecindad?",
+    options: [
+      "Pedúnculo cerebeloso superior",
+      "Pedúnculo cerebeloso medio",
+      "Pedúnculo cerebeloso inferior",
+      "Cuerpo calloso"
+    ],
+    correct: 0,
+    feedback: "Correcto: SCA irriga cerebelo superior y regiones cercanas al pedúnculo superior, crítico para salida cerebelosa."
+  }
+];
         // Variables de Estado Dinámicas
-        let currentTopicDB = [...allQuestionsDB];
+        const superBaseDeDatos = [...allQuestionsDB, ...moreQuestions];
+        let currentTopicDB = [...superBaseDeDatos];
         let questions = [...currentTopicDB];
         let incorrectQuestions = [];
 
@@ -1605,26 +3648,37 @@
 
         // --- LÓGICA CORE ---
         function filterTopic(topic) {
-            if (isExamMode) toggleExamMode(); // Apagar modo examen al cambiar tema
+        if (isExamMode) toggleExamMode(); // Apagar modo examen al cambiar tema
             searchInput.value = ''; 
             
+            // Reemplazamos allQuestionsDB por superBaseDeDatos
             if (topic === 'Todos') {
-                currentTopicDB = [...allQuestionsDB];
+                currentTopicDB = [...superBaseDeDatos];
             } else {
-                currentTopicDB = allQuestionsDB.filter(q => q.topic.includes(topic));
+                currentTopicDB = superBaseDeDatos.filter(q => q.topic.includes(topic));
             }
             questions = [...currentTopicDB];
             
             const buttons = document.querySelectorAll('#topic-filters button');
             buttons.forEach(btn => {
+                // Lógica de colores adaptada para el nuevo botón de Casos Clínicos
                 if (btn.textContent.includes(topic) || (topic === 'Todos' && btn.textContent === 'Todos') || (topic === 'Tallo' && btn.textContent === 'Tallo/Pares')) {
-                    btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
+                    if (topic === 'Caso Clínico') {
+                        btn.className = 'shrink-0 px-4 py-1.5 text-sm font-bold rounded-full bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition';
+                    } else {
+                        btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
+                    }
                 } else {
-                    btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition';
+                    if (btn.textContent.includes('Casos')) {
+                        btn.className = 'shrink-0 px-4 py-1.5 text-sm font-bold rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-200 dark:hover:bg-emerald-800 transition';
+                    } else {
+                        btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition';
+                    }
                 }
             });
 
             initQuiz(true);
+    
         }
 
         function shuffleCurrentQuestions() {
@@ -1904,3 +3958,4 @@
     </script>
 </body>
 </html>
+
