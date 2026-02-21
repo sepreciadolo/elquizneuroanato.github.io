@@ -3,31 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen piloto para neuroanatomía</title>
+    <title>Examen Avanzado de Neuroanatomía - R2 Neurología</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Habilitar Dark Mode en Tailwind
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
         .option-btn { transition: all 0.2s ease-in-out; }
         .option-btn:hover:not(:disabled) { transform: translateY(-2px); }
-        .correct { background-color: #dcfce7; border-color: #22c55e; color: #166534; }
-        .incorrect { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+        .correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; }
+        .incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        .selected-exam { border-color: #6366f1 !important; background-color: #e0e7ff !important; color: #3730a3 !important; }
+        .dark .correct { background-color: #064e3b !important; border-color: #059669 !important; color: #a7f3d0 !important; }
+        .dark .incorrect { background-color: #7f1d1d !important; border-color: #dc2626 !important; color: #fecaca !important; }
+        .dark .selected-exam { border-color: #818cf8 !important; background-color: #312e81 !important; color: #e0e7ff !important; }
         .disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        /* Ocultar scrollbar para los filtros */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex items-center justify-center p-4">
 
-    <div id="app" class="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div id="app" class="max-w-4xl w-full bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transition-colors">
         
+        <!-- Banner de Restaurar Sesión (Oculto por defecto) -->
+        <div id="resume-banner" class="hidden bg-amber-100 dark:bg-amber-900 border-b border-amber-200 dark:border-amber-700 px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <span class="text-amber-800 dark:text-amber-100 text-sm font-medium">💾 Tienes una sesión de estudio guardada.</span>
+            <div class="flex gap-2">
+                <button onclick="resumeSession()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded shadow transition">Continuar</button>
+                <button onclick="discardSession()" class="px-3 py-1.5 bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 text-amber-800 dark:text-amber-200 text-xs font-bold rounded shadow transition">Descartar</button>
+            </div>
+        </div>
+
         <!-- Header -->
-        <div class="bg-indigo-900 text-white p-6 rounded-t-2xl">
-            <h1 class="text-2xl font-bold">Dios los bendiga :c</h1>
-            <p class="text-indigo-200 mt-1">Nivel: No tan complicado</p>
+        <div class="bg-indigo-900 dark:bg-indigo-950 text-white p-6 relative">
+            <!-- Controles Superiores (Dark Mode & Exam Mode) -->
+            <div class="absolute top-4 right-4 flex gap-2">
+                <button onclick="toggleExamMode()" id="exam-mode-btn" class="px-3 py-1 bg-indigo-800 hover:bg-rose-600 text-xs font-bold rounded-full transition flex items-center gap-1 shadow-sm" title="Activar Modo Examen (Contra Reloj)">
+                    ⏱️ Modo Examen
+                </button>
+                <button onclick="toggleDarkMode()" class="p-1.5 bg-indigo-800 hover:bg-indigo-700 rounded-full transition shadow-sm text-sm" title="Alternar Modo Oscuro">
+                    🌙
+                </button>
+            </div>
+
+            <h1 class="text-2xl font-bold mt-2 sm:mt-0">Simulador de Neuroanatomía</h1>
+            <p class="text-indigo-200 mt-1 text-sm sm:text-base">Nivel: Residencia (R2) - Movimientos Anormales y Neurociencia</p>
             
             <div class="mt-4 flex flex-wrap justify-between items-center text-sm font-medium gap-2">
                 <span id="question-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Cargando...</span>
                 
                 <div class="flex gap-2 items-center">
+                    <span id="timer-display" class="hidden bg-rose-600 px-3 py-1 rounded-md font-mono animate-pulse">00:00</span>
                     <span id="score-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Puntuación: 0</span>
                     <span id="percentage-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">
                         <span class="text-green-400">0% ✓</span> | <span class="text-red-400">0% ✗</span>
@@ -36,28 +77,28 @@
             </div>
             
             <!-- Progress bar -->
-            <div class="w-full bg-indigo-950 rounded-full h-2 mt-3">
+            <div class="w-full bg-indigo-950 dark:bg-slate-900 rounded-full h-2 mt-3">
                 <div id="progress-bar" class="bg-indigo-400 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
             </div>
         </div>
 
         <!-- Filtros de Temas -->
-        <div class="bg-white border-b border-slate-100 px-6 py-4 flex flex-wrap gap-2 shadow-sm" id="topic-filters">
-            <button onclick="filterTopic('Todos')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
-            <button onclick="filterTopic('Ganglios Basales')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Ganglios Basales</button>
-            <button onclick="filterTopic('Sinapsis')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Sinapsis</button>
-            <button onclick="filterTopic('Corteza')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Corteza</button>
-            <button onclick="filterTopic('Cerebelo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Cerebelo</button>
-            <button onclick="filterTopic('Tallo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Tallo/Pares</button>
-            <button onclick="filterTopic('Vascular')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Vascular</button>
-            <button onclick="filterTopic('Conectoma')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Conectoma</button>
+        <div class="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 px-6 py-4 flex flex-nowrap overflow-x-auto hide-scrollbar gap-2 shadow-sm" id="topic-filters">
+            <button onclick="filterTopic('Todos')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
+            <button onclick="filterTopic('Ganglios Basales')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Ganglios Basales</button>
+            <button onclick="filterTopic('Sinapsis')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Sinapsis</button>
+            <button onclick="filterTopic('Corteza')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Corteza</button>
+            <button onclick="filterTopic('Cerebelo')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Cerebelo</button>
+            <button onclick="filterTopic('Tallo')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Tallo/Pares</button>
+            <button onclick="filterTopic('Vascular')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Vascular</button>
+            <button onclick="filterTopic('Conectoma')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Conectoma</button>
         </div>
 
         <!-- Barra de Buscador y Botón Aleatorio -->
-        <div class="bg-slate-50 border-b border-slate-200 px-6 py-3 flex flex-col md:flex-row gap-3 justify-between items-center shadow-inner">
+        <div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-6 py-3 flex flex-col md:flex-row gap-3 justify-between items-center shadow-inner">
             <div class="relative w-full md:w-2/3">
                 <span class="absolute left-3 top-2 text-slate-400">🔍</span>
-                <input type="text" id="search-input" placeholder="Buscar palabra clave, síndrome o epónimo..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 outline-none text-sm transition shadow-sm">
+                <input type="text" id="search-input" placeholder="Buscar síndrome, receptor o epónimo..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 outline-none text-sm transition shadow-sm">
             </div>
             <button onclick="shuffleCurrentQuestions()" class="w-full md:w-auto px-4 py-2 text-sm font-bold rounded-lg bg-amber-400 text-amber-900 shadow hover:bg-amber-500 hover:shadow-md transition flex items-center justify-center gap-2">
                 🔀 Mezclar
@@ -66,7 +107,7 @@
 
         <!-- Quiz Container -->
         <div id="quiz-container" class="p-6 md:p-8">
-            <h2 id="question-text" class="text-xl font-semibold text-slate-800 mb-6 leading-relaxed">
+            <h2 id="question-text" class="text-xl font-semibold text-slate-800 dark:text-white mb-6 leading-relaxed">
                 <!-- La pregunta se insertará aquí -->
             </h2>
 
@@ -74,34 +115,57 @@
                 <!-- Las opciones se insertarán aquí -->
             </div>
 
+            <!-- Botón Siguiente Independiente (Usado en Modo Examen) -->
+            <button id="exam-next-btn" onclick="processExamAnswer()" class="hidden mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
+                Siguiente Pregunta
+            </button>
+
+            <!-- Retroalimentación Inmediata (Modo Normal) -->
             <div id="feedback-container" class="mt-6 hidden">
                 <div id="feedback-alert" class="p-4 rounded-lg border">
                     <p id="feedback-title" class="font-bold mb-1"></p>
                     <p id="feedback-text" class="text-sm mt-1 leading-relaxed"></p>
                 </div>
-                <button id="next-btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
+                <button id="next-btn" onclick="goToNextQuestion()" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
                     Siguiente Pregunta
                 </button>
             </div>
         </div>
 
         <!-- Results Container -->
-        <div id="results-container" class="p-6 md:p-8 hidden text-center">
-            <h2 class="text-3xl font-bold text-slate-800 mb-2">¡Examen Finalizado!</h2>
-            <p class="text-slate-600 mb-6">Aquí están tus resultados del simulacro.</p>
-            
-            <div class="text-6xl font-bold text-indigo-600 mb-2" id="final-score">
-                0/0
+        <div id="results-container" class="p-6 md:p-8 hidden">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">¡Examen Finalizado!</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">Aquí están tus resultados del simulacro.</p>
+                
+                <div class="text-6xl font-bold text-indigo-600 dark:text-indigo-400 mb-2" id="final-score">0/0</div>
+                <p id="final-message" class="text-lg font-medium text-slate-700 dark:text-slate-300"></p>
             </div>
-            <p id="final-message" class="text-lg font-medium text-slate-700 mb-8"></p>
 
+            <!-- Analíticas por Tema -->
+            <div id="analytics-container" class="mb-8 bg-slate-50 dark:bg-slate-700/50 p-6 rounded-xl border border-slate-200 dark:border-slate-600 hidden">
+                <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-600 pb-2">Diagnóstico por Temas</h3>
+                <div id="analytics-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Barras de analíticas se inyectan aquí -->
+                </div>
+            </div>
+
+            <!-- Botones Finales -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                <button onclick="shareResults()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md flex items-center justify-center gap-2">
+                    🏆 Retar a un R (Copiar)
+                </button>
                 <button id="retry-btn" onclick="retryIncorrect()" class="hidden bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
                     ↻ Repasar Errores (<span id="errors-count">0</span>)
                 </button>
                 <button onclick="restartFull()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
-                    ↺ Reiniciar Tema
+                    ↺ Reiniciar
                 </button>
+            </div>
+            
+            <!-- Toast Notification -->
+            <div id="toast" class="hidden fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-opacity">
+                ¡Resultados copiados al portapapeles!
             </div>
         </div>
     </div>
@@ -1387,14 +1451,24 @@
                 feedback: "¡Brillante! Esta es la clásica 'neuralgia vagoglosofaríngea con síncope'. El nervio de Hering (rama del IX par) lleva aferencias barorreceptoras al núcleo del tracto solitario (NTS). Un dolor intenso en el territorio del IX sobreestimula artificialmente el NTS, el cual activa el núcleo dorsal del Vago (X par), generando una descarga parasimpática masiva (bradicardia/asistolia y síncope)."
             }
         ];
-  // Variables de Estado Dinámicas
-        let currentTopicDB = [...allQuestionsDB]; // Base de datos filtrada por el tema actual
-        let questions = [...currentTopicDB];      // Preguntas activas (pueden estar mezcladas o filtradas por buscador)
-        let incorrectQuestions = [];              // Guarda las que el usuario responde mal
+
+        // Variables de Estado Dinámicas
+        let currentTopicDB = [...allQuestionsDB];
+        let questions = [...currentTopicDB];
+        let incorrectQuestions = [];
 
         let currentQuestionIndex = 0;
         let score = 0;
         let answeredCount = 0;
+
+        // Variables Modo Examen & Tiempos
+        let isExamMode = false;
+        let examTimer = null;
+        let timeRemaining = 0;
+        let userSelectedOptionIndex = null;
+        
+        // Registro analítico
+        let topicAnalytics = {};
 
         // Elementos del DOM
         const questionTracker = document.getElementById('question-tracker');
@@ -1403,20 +1477,136 @@
         const progressBar = document.getElementById('progress-bar');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
+        
         const feedbackContainer = document.getElementById('feedback-container');
         const feedbackAlert = document.getElementById('feedback-alert');
         const feedbackTitle = document.getElementById('feedback-title');
         const feedbackText = document.getElementById('feedback-text');
+        
+        const examNextBtn = document.getElementById('exam-next-btn');
         const nextBtn = document.getElementById('next-btn');
+        const examModeBtn = document.getElementById('exam-mode-btn');
+        const timerDisplay = document.getElementById('timer-display');
+        
         const quizContainer = document.getElementById('quiz-container');
         const resultsContainer = document.getElementById('results-container');
         const finalScore = document.getElementById('final-score');
         const finalMessage = document.getElementById('final-message');
         const searchInput = document.getElementById('search-input');
+        const resumeBanner = document.getElementById('resume-banner');
 
-        // 1. Función para filtrar por tema (Botones Superiores)
+        // --- SISTEMA DE GUARDADO (LOCAL STORAGE) ---
+        function checkSavedSession() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('neuroQuizProgress'));
+                if (saved && saved.answeredCount > 0 && saved.answeredCount < saved.totalActive) {
+                    resumeBanner.classList.remove('hidden');
+                }
+            } catch (e) { console.error("Error leyendo LocalStorage"); }
+        }
+
+        function saveSession() {
+            if (isExamMode) return; // No guardamos a mitad de un examen contra reloj
+            const state = {
+                currentQuestionIndex,
+                score,
+                answeredCount,
+                topicAnalytics,
+                incorrectTexts: incorrectQuestions.map(q => q.question),
+                activeQuestions: questions.map(q => q.question),
+                totalActive: questions.length
+            };
+            localStorage.setItem('neuroQuizProgress', JSON.stringify(state));
+        }
+
+        function resumeSession() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('neuroQuizProgress'));
+                if (saved) {
+                    // Restaurar orden de preguntas activas
+                    questions = saved.activeQuestions.map(qText => allQuestionsDB.find(q => q.question === qText)).filter(Boolean);
+                    incorrectQuestions = saved.incorrectTexts.map(qText => allQuestionsDB.find(q => q.question === qText)).filter(Boolean);
+                    
+                    currentQuestionIndex = saved.currentQuestionIndex;
+                    score = saved.score;
+                    answeredCount = saved.answeredCount;
+                    topicAnalytics = saved.topicAnalytics || {};
+                    
+                    resumeBanner.classList.add('hidden');
+                    quizContainer.classList.remove('hidden');
+                    resultsContainer.classList.add('hidden');
+                    updateTracker();
+                    loadQuestion();
+                }
+            } catch (e) {}
+        }
+
+        function discardSession() {
+            localStorage.removeItem('neuroQuizProgress');
+            resumeBanner.classList.add('hidden');
+        }
+
+        // --- MODO OSCURO ---
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('neuroQuizTheme', isDark ? 'dark' : 'light');
+        }
+
+        // --- MODO EXAMEN ---
+        function toggleExamMode() {
+            isExamMode = !isExamMode;
+            if (isExamMode) {
+                examModeBtn.classList.replace('bg-indigo-800', 'bg-rose-600');
+                examModeBtn.innerHTML = '🛑 Terminar Examen';
+                timerDisplay.classList.remove('hidden');
+                discardSession(); // Un examen nuevo borra el progreso guardado
+                initQuiz(true); // Reinicia todo
+            } else {
+                examModeBtn.classList.replace('bg-rose-600', 'bg-indigo-800');
+                examModeBtn.innerHTML = '⏱️ Modo Examen';
+                timerDisplay.classList.add('hidden');
+                stopTimer();
+                initQuiz(true);
+            }
+        }
+
+        function startTimer() {
+            stopTimer();
+            timeRemaining = questions.length * 60; // 1 minuto por pregunta
+            updateTimerDisplay();
+            examTimer = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    stopTimer();
+                    forceSubmitExam();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (examTimer) clearInterval(examTimer);
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+            const s = (timeRemaining % 60).toString().padStart(2, '0');
+            timerDisplay.textContent = `${m}:${s}`;
+            if(timeRemaining < 60) timerDisplay.classList.add('text-white', 'bg-red-700');
+            else timerDisplay.classList.remove('bg-red-700');
+        }
+
+        function forceSubmitExam() {
+            // Evaluar la pregunta actual si quedó seleccionada
+            if (userSelectedOptionIndex !== null) processExamAnswer();
+            else showResults();
+        }
+
+        // --- LÓGICA CORE ---
         function filterTopic(topic) {
-            searchInput.value = ''; // Limpiar buscador al cambiar de tema
+            if (isExamMode) toggleExamMode(); // Apagar modo examen al cambiar tema
+            searchInput.value = ''; 
             
             if (topic === 'Todos') {
                 currentTopicDB = [...allQuestionsDB];
@@ -1425,36 +1615,33 @@
             }
             questions = [...currentTopicDB];
             
-            // Cambiar los colores de los botones
             const buttons = document.querySelectorAll('#topic-filters button');
             buttons.forEach(btn => {
                 if (btn.textContent.includes(topic) || (topic === 'Todos' && btn.textContent === 'Todos') || (topic === 'Tallo' && btn.textContent === 'Tallo/Pares')) {
-                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
+                    btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
                 } else {
-                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition';
+                    btn.className = 'shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition';
                 }
             });
 
             initQuiz(true);
         }
 
-        // 2. Función para Mezclar Preguntas (Shuffle)
         function shuffleCurrentQuestions() {
-            // Algoritmo Fisher-Yates para mezclar el array
+            if (isExamMode) return; // No mezclar a mitad de examen
             for (let i = questions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [questions[i], questions[j]] = [questions[j], questions[i]];
             }
-            initQuiz(true); // Reiniciar el quiz con el nuevo orden
+            initQuiz(true);
         }
 
-        // 3. Función del Buscador en tiempo real
         searchInput.addEventListener('input', (e) => {
+            if (isExamMode) return;
             const term = e.target.value.toLowerCase();
             if(term === '') {
-                questions = [...currentTopicDB]; // Si borran el texto, vuelve al tema original
+                questions = [...currentTopicDB];
             } else {
-                // Filtra buscando en la pregunta, el feedback o el tema
                 questions = currentTopicDB.filter(q => 
                     q.question.toLowerCase().includes(term) || 
                     q.feedback.toLowerCase().includes(term) || 
@@ -1464,41 +1651,43 @@
             initQuiz(true);
         });
 
-        // 4. Inicializar o Reiniciar el Quiz
-        // resetErrors = true limpia la memoria de errores. Si es false, estamos en modo "Repasar Errores"
         function initQuiz(resetErrors = true) {
             currentQuestionIndex = 0;
             score = 0;
             answeredCount = 0;
+            topicAnalytics = {};
             if (resetErrors) incorrectQuestions = []; 
+            userSelectedOptionIndex = null;
             
             quizContainer.classList.remove('hidden');
             resultsContainer.classList.add('hidden');
+            examNextBtn.classList.add('hidden');
+            feedbackContainer.classList.add('hidden');
             
             if(questions.length === 0) {
-                questionText.innerHTML = "No se encontraron preguntas. Intenta con otra palabra clave.";
+                questionText.innerHTML = "No se encontraron preguntas.";
                 optionsContainer.innerHTML = '';
                 updateTracker();
                 return;
             }
 
+            if (isExamMode) startTimer();
+
             updateTracker();
             loadQuestion();
+            if(!isExamMode) saveSession();
         }
 
-        // Función auxiliar para Reiniciar todo el bloque actual
         function restartFull() {
             questions = [...currentTopicDB];
             initQuiz(true);
         }
 
-        // Función para el modo "Repasar Errores"
         function retryIncorrect() {
             questions = [...incorrectQuestions];
-            initQuiz(true); // Reiniciamos los contadores, pero ahora solo jugamos con las malas
+            initQuiz(true);
         }
 
-        // Actualizar contadores y barra de progreso
         function updateTracker() {
             if(questions.length === 0) {
                 questionTracker.textContent = `0 de 0`;
@@ -1511,7 +1700,6 @@
             
             scoreTracker.textContent = `Puntuación: ${score}`;
             
-            // Lógica de cálculo de porcentajes
             if (answeredCount > 0) {
                 const percCorrect = Math.round((score / answeredCount) * 100);
                 const percIncorrect = 100 - percCorrect;
@@ -1521,77 +1709,92 @@
             }
         }
 
-        // Cargar una pregunta a la pantalla
         function loadQuestion() {
             const currentQ = questions[currentQuestionIndex];
+            userSelectedOptionIndex = null;
             
-            // Formatear el texto de la pregunta
             questionText.innerHTML = `<span class="text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">${currentQ.topic}</span> ${currentQ.question}`;
-            
-            // Limpiar opciones anteriores
             optionsContainer.innerHTML = '';
             feedbackContainer.classList.add('hidden');
+            examNextBtn.classList.add('hidden');
 
-            // Crear botones de opciones
             currentQ.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                button.className = 'option-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-400 bg-white font-medium text-slate-700 focus:outline-none';
+                button.className = 'option-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 font-medium text-slate-700 dark:text-slate-200 focus:outline-none';
                 button.textContent = option;
                 button.onclick = () => selectOption(index, button);
                 optionsContainer.appendChild(button);
             });
         }
 
-        // Manejar la selección de una opción
         function selectOption(selectedIndex, selectedButton) {
             const currentQ = questions[currentQuestionIndex];
-            const isCorrect = selectedIndex === currentQ.correct;
             const allButtons = optionsContainer.querySelectorAll('button');
 
-            // Deshabilitar todos los botones
+            if (isExamMode) {
+                // Modo Examen: Selección visual sin retroalimentación
+                allButtons.forEach(btn => btn.classList.remove('selected-exam', 'border-2'));
+                selectedButton.classList.add('selected-exam', 'border-2');
+                userSelectedOptionIndex = selectedIndex;
+                examNextBtn.classList.remove('hidden');
+                return;
+            }
+
+            // Modo Normal: Retroalimentación inmediata
+            const isCorrect = selectedIndex === currentQ.correct;
+
+            // Inicializar analíticas del tema
+            if (!topicAnalytics[currentQ.topic]) topicAnalytics[currentQ.topic] = { total: 0, correct: 0 };
+            topicAnalytics[currentQ.topic].total++;
+
             allButtons.forEach((btn, index) => {
                 btn.classList.add('disabled');
                 btn.disabled = true;
-                
-                // Resaltar la respuesta correcta siempre
                 if (index === currentQ.correct) {
-                    btn.classList.remove('border-slate-200', 'disabled');
+                    btn.classList.remove('border-slate-200', 'dark:border-slate-600', 'disabled');
                     btn.classList.add('correct', 'border-2');
                 }
             });
 
-            // Lógica de aciertos/errores
             if (isCorrect) {
                 score++;
-                feedbackAlert.className = 'p-4 rounded-lg border bg-green-50 border-green-200 text-green-900';
+                topicAnalytics[currentQ.topic].correct++;
+                feedbackAlert.className = 'p-4 rounded-lg border bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-green-900 dark:text-green-200';
                 feedbackTitle.textContent = '¡Respuesta Correcta!';
             } else {
-                selectedButton.classList.remove('border-slate-200');
+                selectedButton.classList.remove('border-slate-200', 'dark:border-slate-600');
                 selectedButton.classList.add('incorrect');
-                feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 border-red-200 text-red-900';
+                feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-900 dark:text-red-200';
                 feedbackTitle.textContent = 'Respuesta Incorrecta';
-                
-                // Si la falla, la guardamos en el array de incorrectas para poder repasarla después
-                if (!incorrectQuestions.includes(currentQ)) {
-                    incorrectQuestions.push(currentQ);
-                }
+                if (!incorrectQuestions.includes(currentQ)) incorrectQuestions.push(currentQ);
             }
 
-            // Actualizar contadores globales en tiempo real
             answeredCount++;
             updateTracker();
-
-            // Mostrar retroalimentación
+            saveSession(); // Guardar avance
             feedbackText.innerHTML = currentQ.feedback;
             feedbackContainer.classList.remove('hidden');
-
-            // Mover la barra de progreso
-            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
         }
 
-        // Botón de siguiente
-        nextBtn.onclick = () => {
+        function processExamAnswer() {
+            const currentQ = questions[currentQuestionIndex];
+            
+            if (!topicAnalytics[currentQ.topic]) topicAnalytics[currentQ.topic] = { total: 0, correct: 0 };
+            topicAnalytics[currentQ.topic].total++;
+
+            if (userSelectedOptionIndex === currentQ.correct) {
+                score++;
+                topicAnalytics[currentQ.topic].correct++;
+            } else {
+                if (!incorrectQuestions.includes(currentQ)) incorrectQuestions.push(currentQ);
+            }
+            
+            answeredCount++;
+            updateTracker();
+            goToNextQuestion();
+        }
+
+        function goToNextQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
                 updateTracker();
@@ -1599,27 +1802,54 @@
             } else {
                 showResults();
             }
-        };
+        }
 
-        // Mostrar pantalla de resultados finales
         function showResults() {
+            stopTimer();
+            if(!isExamMode) discardSession(); // Limpiar guardado al terminar exitosamente
+            
             quizContainer.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
             
             finalScore.textContent = `${score}/${questions.length}`;
             
-            const percentage = score / questions.length;
-            if (percentage >= 0.9) {
-                finalMessage.textContent = "¡Impresionante! Tienes un excelente nivel. Estás más que listo.";
-            } else if (percentage >= 0.7) {
-                finalMessage.textContent = "¡Muy buen trabajo! Tienes bases sólidas en neuroanatomía funcional.";
-            } else if (percentage >= 0.5) {
-                finalMessage.textContent = "Buen intento. Revisa en detalle la retroalimentación de las vías específicas.";
+            const percentage = questions.length > 0 ? (score / questions.length) : 0;
+            if (percentage >= 0.9) finalMessage.textContent = "¡Impresionante! Tienes un excelente nivel. Estás listo.";
+            else if (percentage >= 0.7) finalMessage.textContent = "¡Muy buen trabajo! Tienes bases sólidas en neuroanatomía funcional.";
+            else if (percentage >= 0.5) finalMessage.textContent = "Buen intento. Revisa en detalle las retroalimentaciones.";
+            else finalMessage.textContent = "Usa la herramienta de repasar errores para fortalecer tus bases.";
+
+            // Renderizar Analíticas
+            const analyticsContainer = document.getElementById('analytics-container');
+            const analyticsGrid = document.getElementById('analytics-grid');
+            analyticsGrid.innerHTML = '';
+            
+            const topics = Object.keys(topicAnalytics);
+            if (topics.length > 0) {
+                analyticsContainer.classList.remove('hidden');
+                topics.forEach(t => {
+                    const stats = topicAnalytics[t];
+                    const p = Math.round((stats.correct / stats.total) * 100);
+                    let colorClass = p >= 80 ? 'bg-green-500' : (p >= 50 ? 'bg-amber-500' : 'bg-red-500');
+                    
+                    analyticsGrid.innerHTML += `
+                        <div class="bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-100 dark:border-slate-600">
+                            <div class="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                                <span>${t}</span>
+                                <span>${p}%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-1.5">
+                                <div class="${colorClass} h-1.5 rounded-full" style="width: ${p}%"></div>
+                            </div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 text-right">${stats.correct}/${stats.total} correctas</div>
+                        </div>
+                    `;
+                });
             } else {
-                finalMessage.textContent = "Es un examen con nivel de subespecialidad. Usa las retroalimentaciones como guía de estudio.";
+                analyticsContainer.classList.add('hidden');
             }
 
-            // Mostrar botón de repasar errores si falló al menos una
+            // Botón de errores
             const retryBtn = document.getElementById('retry-btn');
             const errorsCount = document.getElementById('errors-count');
             if(incorrectQuestions.length > 0) {
@@ -1630,9 +1860,47 @@
             }
         }
 
-        // Iniciar la app por primera vez
-        initQuiz();
+        // Compartir Resultados
+        function shareResults() {
+            const perc = Math.round((score / questions.length) * 100) || 0;
+            
+            // Buscar el peor tema
+            let weakestTopic = "Ninguno, soy un crack";
+            let lowestScore = 101;
+            Object.keys(topicAnalytics).forEach(t => {
+                const p = (topicAnalytics[t].correct / topicAnalytics[t].total) * 100;
+                if (p < lowestScore) { lowestScore = p; weakestTopic = t; }
+            });
+
+            const modeText = isExamMode ? " (Contra Reloj ⏱️)" : "";
+            const text = `🧠 Simulador Neuroanatomía - R2${modeText}\n\nAcabo de sacar ${score}/${questions.length} (${perc}%).\nMi punto a reforzar: ${lowestScore === 101 ? 'Ninguno' : weakestTopic}.\n\n¡A ver si me superas en el turno!`;
+            
+            // Copiar al portapapeles
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                const toast = document.getElementById('toast');
+                toast.classList.remove('hidden');
+                toast.classList.add('opacity-100');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                    setTimeout(() => toast.classList.add('hidden'), 300);
+                }, 3000);
+            } catch (err) {
+                console.error("Error al copiar");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // On Load (Verificar Tema y Sesión)
+        if (localStorage.getItem('neuroQuizTheme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        checkSavedSession();
+        initQuiz(true);
     </script>
 </body>
 </html>
-
