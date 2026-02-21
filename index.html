@@ -18,25 +18,14 @@
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
 
     <div id="app" class="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
-        <!-- Header -->
-        <div class="bg-indigo-900 text-white p-6">
-            <h1 class="text-2xl font-bold">Simulador de Neuroanatomía</h1>
-            <p class="text-indigo-200 mt-1">Nivel: Residencia (R2) - Movimientos Anormales y Neurociencia</p>
-            <div class="mt-4 flex justify-between items-center text-sm font-medium">
-                <span id="question-tracker">Pregunta 1 de 8</span>
-                <span id="score-tracker">Puntuación: 0</span>
-            </div>
-            <!-- Progress bar -->
-            <div class="w-full bg-indigo-950 rounded-full h-2 mt-2">
-                <div id="progress-bar" class="bg-indigo-400 h-2 rounded-full" style="width: 0%"></div>
-            </div>
-        </div>
-<div class="bg-indigo-900 text-white p-6 rounded-t-2xl">
+        
+        <!-- Header Único y Corregido -->
+        <div class="bg-indigo-900 text-white p-6 rounded-t-2xl">
             <h1 class="text-2xl font-bold">Simulador de Neuroanatomía</h1>
             <p class="text-indigo-200 mt-1">Nivel: Residencia (R2) - Movimientos Anormales y Neurociencia</p>
             
             <div class="mt-4 flex flex-wrap justify-between items-center text-sm font-medium gap-2">
-                <span id="question-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Pregunta 1 de 85</span>
+                <span id="question-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Cargando...</span>
                 
                 <div class="flex gap-2 items-center">
                     <span id="score-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Puntuación: 0</span>
@@ -52,7 +41,7 @@
             </div>
         </div>
 
-        <!-- Filtro de Temas Mejorado -->
+        <!-- Filtro de Temas -->
         <div class="bg-white border-b border-slate-100 px-6 py-4 flex flex-wrap gap-2 shadow-sm" id="topic-filters">
             <button onclick="filterTopic('Todos')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
             <button onclick="filterTopic('Ganglios Basales')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Ganglios Basales</button>
@@ -62,7 +51,9 @@
             <button onclick="filterTopic('Tallo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Tallo/Pares</button>
             <button onclick="filterTopic('Vascular')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Vascular</button>
             <button onclick="filterTopic('Conectoma')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Conectoma</button>
+            <!-- Nota: Si creaste temas nuevos en tus 300 preguntas, puedes agregar más botones aquí siguiendo el mismo formato -->
         </div>
+
         <!-- Quiz Container -->
         <div id="quiz-container" class="p-6 md:p-8">
             <h2 id="question-text" class="text-xl font-semibold text-slate-800 mb-6 leading-relaxed">
@@ -86,11 +77,11 @@
 
         <!-- Results Container -->
         <div id="results-container" class="p-6 md:p-8 hidden text-center">
-            <h2 class="text-3xl font-bold text-slate-800 mb-2">¡Examen Finalizado, Sebastián!</h2>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">¡Examen Finalizado!</h2>
             <p class="text-slate-600 mb-6">Aquí están tus resultados del simulacro.</p>
             
             <div class="text-6xl font-bold text-indigo-600 mb-2" id="final-score">
-                0/8
+                0/0
             </div>
             <p id="final-message" class="text-lg font-medium text-slate-700 mb-8"></p>
 
@@ -101,8 +92,27 @@
     </div>
 
     <script>
-        // Base de datos de preguntas (Nivel Avanzado - R2)
-       let questions = [
+        // ========================================================================
+        // ⚠️ SEBASTIÁN: PEGA AQUÍ ADENTRO TUS 300+ PREGUNTAS ⚠️
+        // Reemplaza todo lo que hay dentro de los corchetes [...] con tus preguntas
+        // ========================================================================
+        const allQuestionsDB = [
+            // Pega todo tu banco de preguntas aquí. Te dejo una de ejemplo para que no se rompa si pruebas el código antes de pegarlas.
+            {
+                topic: "Instrucciones",
+                question: "¡La interfaz está arreglada! Por favor reemplaza esta pregunta de ejemplo pegando tu base de datos de 300 preguntas en la variable 'allQuestionsDB' en el código.",
+                options: [
+                    "Entendido, voy a pegar mi código.",
+                    "No lo haré."
+                ],
+                correct: 0,
+                feedback: "¡Perfecto! Pega tus preguntas y tendrás el mejor simulador de la residencia."
+            }
+        ];
+        // ========================================================================
+
+        // Variable dinámica para manejar los filtros sin perder la base original
+        let questions = [
   { topic: "Pares Craneales", question: "En el reflejo fotomotor, ¿qué estructura del mesencéfalo recibe la proyección pretectal bilateral que activa la vía parasimpática eferente?", options: ["Núcleo de Perlia", "Núcleo de Edinger–Westphal (accesorio del III) bilateral", "Núcleo intersticial de Cajal", "Colículo superior"], correct: 1, feedback: "Correcto: la región pretectal proyecta bilateralmente a Edinger–Westphal, explicando miosis directa y consensual." },
   { topic: "Pares Craneales", question: "Una lesión que compromete el fascículo longitudinal medial (FLM) causa oftalmoplejía internuclear. ¿Qué componente motor queda típicamente deficitario en el ojo ipsilateral a la lesión durante la mirada conjugada lateral?", options: ["Abducción por VI", "Aducción por III", "Elevación por IV", "Depresión por III (recto inferior)"], correct: 1, feedback: "Correcto: se pierde la señal internuclear hacia el subnúcleo del recto medial (III), fallando la aducción ipsilateral." },
   { topic: "Pares Craneales", question: "La disociación 'parálisis supranuclear de la mirada vertical' sugiere compromiso de circuitos del mesencéfalo dorsal. ¿Qué núcleo es clave para las sacadas verticales?", options: ["PPRF", "riMLF (núcleo intersticial rostral del FLM)", "Núcleo de Darkschewitsch", "Núcleo motor del IV"], correct: 1, feedback: "Correcto: el riMLF es el generador principal de sacadas verticales; PPRF es horizontal." },
@@ -1406,16 +1416,12 @@
         // Variables de estado
         let currentQuestionIndex = 0;
         let score = 0;
-        let answeredCount = 0; // NUEVA VARIABLE para rastrear las respondidas
+        let answeredCount = 0;
 
         // Elementos del DOM
         const questionTracker = document.getElementById('question-tracker');
         const scoreTracker = document.getElementById('score-tracker');
-        const percentageTracker = document.getElementById('percentage-tracker'); // NUEVO ELEMENTO
-
-        // Elementos del DOM
-        const questionTracker = document.getElementById('question-tracker');
-        const scoreTracker = document.getElementById('score-tracker');
+        const percentageTracker = document.getElementById('percentage-tracker');
         const progressBar = document.getElementById('progress-bar');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
@@ -1429,18 +1435,47 @@
         const finalScore = document.getElementById('final-score');
         const finalMessage = document.getElementById('final-message');
 
-      // Inicializar el quiz
+        // Función para filtrar por tema
+        function filterTopic(topic) {
+            if (topic === 'Todos') {
+                questions = [...allQuestionsDB];
+            } else {
+                questions = allQuestionsDB.filter(q => q.topic.includes(topic));
+            }
+            
+            // Cambiar los colores de los botones
+            const buttons = document.querySelectorAll('#topic-filters button');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(topic) || (topic === 'Todos' && btn.textContent === 'Todos') || (topic === 'Tallo' && btn.textContent === 'Tallo/Pares')) {
+                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
+                } else {
+                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition';
+                }
+            });
+
+            // Reiniciar el quiz con las nuevas preguntas filtradas
+            initQuiz();
+        }
+
+        // Inicializar el quiz
         function initQuiz() {
             currentQuestionIndex = 0;
             score = 0;
-            answeredCount = 0; // Reiniciamos el contador de respondidas
+            answeredCount = 0;
             quizContainer.classList.remove('hidden');
             resultsContainer.classList.add('hidden');
+            
+            if(questions.length === 0) {
+                questionText.innerHTML = "No hay preguntas para este tema.";
+                optionsContainer.innerHTML = '';
+                return;
+            }
+
             updateTracker();
             loadQuestion();
         }
 
-        // Actualizar contadores, barra de progreso y porcentajes
+        // Actualizar contadores y barra de progreso
         function updateTracker() {
             questionTracker.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
             scoreTracker.textContent = `Puntuación: ${score}`;
@@ -1458,12 +1493,11 @@
             progressBar.style.width = `${progress}%`;
         }
 
-
         // Cargar una pregunta
         function loadQuestion() {
             const currentQ = questions[currentQuestionIndex];
             
-            // Formatear el texto de la pregunta con su tema
+            // Formatear el texto de la pregunta
             questionText.innerHTML = `<span class="text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">${currentQ.topic}</span> ${currentQ.question}`;
             
             // Limpiar opciones anteriores
@@ -1498,10 +1532,9 @@
                 }
             });
 
-            // Lógica si la respuesta fue correcta o incorrecta
+            // Lógica de aciertos/errores
             if (isCorrect) {
                 score++;
-                scoreTracker.textContent = `Puntuación: ${score}`;
                 feedbackAlert.className = 'p-4 rounded-lg border bg-green-50 border-green-200 text-green-800';
                 feedbackTitle.textContent = '¡Respuesta Correcta!';
             } else {
@@ -1510,13 +1543,16 @@
                 feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 border-red-200 text-red-800';
                 feedbackTitle.textContent = 'Respuesta Incorrecta';
             }
- answeredCount++;
+
+            // Actualizar contadores globales en tiempo real
+            answeredCount++;
             updateTracker();
+
             // Mostrar retroalimentación
             feedbackText.textContent = currentQ.feedback;
             feedbackContainer.classList.remove('hidden');
 
-            // Actualizar barra de progreso para la pregunta actual
+            // Mover la barra de progreso
             const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
@@ -1539,23 +1575,20 @@
             
             finalScore.textContent = `${score}/${questions.length}`;
             
-            // Mensaje personalizado según el puntaje
             const percentage = score / questions.length;
-            if (percentage === 1) {
-                finalMessage.textContent = "¡Impresionante, Sebastián! Tienes un excelente nivel. Estás más que listo para discutir de igual a igual con el neurocientífico y el movimientólogo.";
+            if (percentage >= 0.9) {
+                finalMessage.textContent = "¡Impresionante! Tienes un excelente nivel. Estás más que listo.";
             } else if (percentage >= 0.7) {
-                finalMessage.textContent = "¡Muy buen trabajo! Tienes bases sólidas en neuroanatomía funcional. Repasa un par de detalles finos y destrozarás ese examen de la Nacional.";
+                finalMessage.textContent = "¡Muy buen trabajo! Tienes bases sólidas en neuroanatomía funcional.";
             } else if (percentage >= 0.5) {
-                finalMessage.textContent = "Buen intento. Las preguntas son difíciles y combinan anatomía con función. Revisa en detalle la retroalimentación de las vías específicas.";
+                finalMessage.textContent = "Buen intento. Revisa en detalle la retroalimentación de las vías específicas.";
             } else {
-                finalMessage.textContent = "Es un examen con nivel de subespecialidad. Usa las retroalimentaciones como guía de estudio para fortalecer esos conceptos básicos.";
+                finalMessage.textContent = "Es un examen con nivel de subespecialidad. Usa las retroalimentaciones como guía de estudio.";
             }
         }
 
-        // Iniciar el quiz al cargar la página
+        // Iniciar la app
         initQuiz();
     </script>
 </body>
-
 </html>
-
