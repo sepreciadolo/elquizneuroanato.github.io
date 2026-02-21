@@ -96,23 +96,8 @@
         // ⚠️ SEBASTIÁN: PEGA AQUÍ ADENTRO TUS 300+ PREGUNTAS ⚠️
         // Reemplaza todo lo que hay dentro de los corchetes [...] con tus preguntas
         // ========================================================================
-        const allQuestionsDB = [
-            // Pega todo tu banco de preguntas aquí. Te dejo una de ejemplo para que no se rompa si pruebas el código antes de pegarlas.
-            {
-                topic: "Instrucciones",
-                question: "¡La interfaz está arreglada! Por favor reemplaza esta pregunta de ejemplo pegando tu base de datos de 300 preguntas en la variable 'allQuestionsDB' en el código.",
-                options: [
-                    "Entendido, voy a pegar mi código.",
-                    "No lo haré."
-                ],
-                correct: 0,
-                feedback: "¡Perfecto! Pega tus preguntas y tendrás el mejor simulador de la residencia."
-            }
-        ];
-        // ========================================================================
 
-        // Variable dinámica para manejar los filtros sin perder la base original
-        let questions = [
+ const allQuestionsDB = [
   { topic: "Pares Craneales", question: "En el reflejo fotomotor, ¿qué estructura del mesencéfalo recibe la proyección pretectal bilateral que activa la vía parasimpática eferente?", options: ["Núcleo de Perlia", "Núcleo de Edinger–Westphal (accesorio del III) bilateral", "Núcleo intersticial de Cajal", "Colículo superior"], correct: 1, feedback: "Correcto: la región pretectal proyecta bilateralmente a Edinger–Westphal, explicando miosis directa y consensual." },
   { topic: "Pares Craneales", question: "Una lesión que compromete el fascículo longitudinal medial (FLM) causa oftalmoplejía internuclear. ¿Qué componente motor queda típicamente deficitario en el ojo ipsilateral a la lesión durante la mirada conjugada lateral?", options: ["Abducción por VI", "Aducción por III", "Elevación por IV", "Depresión por III (recto inferior)"], correct: 1, feedback: "Correcto: se pierde la señal internuclear hacia el subnúcleo del recto medial (III), fallando la aducción ipsilateral." },
   { topic: "Pares Craneales", question: "La disociación 'parálisis supranuclear de la mirada vertical' sugiere compromiso de circuitos del mesencéfalo dorsal. ¿Qué núcleo es clave para las sacadas verticales?", options: ["PPRF", "riMLF (núcleo intersticial rostral del FLM)", "Núcleo de Darkschewitsch", "Núcleo motor del IV"], correct: 1, feedback: "Correcto: el riMLF es el generador principal de sacadas verticales; PPRF es horizontal." },
@@ -1388,30 +1373,8 @@
             }
         ];
 
-           // Pegar debajo del cierre ]; de tus preguntas
-        const database = [...questions]; // Guarda la base original intacta
-
-        function filterTopic(topic) {
-            // Filtrar las preguntas
-            if (topic === 'Todos') {
-                questions = [...database];
-            } else {
-                questions = database.filter(q => q.topic.includes(topic));
-            }
-            
-             // Cambiar los colores de los botones para saber cuál está activo (Nuevo Diseño)
-            const buttons = document.querySelectorAll('#topic-filters button');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(topic) || topic === 'Todos' && btn.textContent === 'Todos' || topic === 'Tallo' && btn.textContent === 'Tallo/Pares') {
-                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
-                } else {
-                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition';
-                }
-            });
-
-            // Reiniciar el quiz con las nuevas preguntas
-            initQuiz();
-        }
+             // Variable dinámica para manejar los filtros sin perder la base original
+        let questions = [...allQuestionsDB];
 
         // Variables de estado
         let currentQuestionIndex = 0;
