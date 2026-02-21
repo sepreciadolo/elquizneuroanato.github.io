@@ -1,6 +1,6 @@
-🧠 Simulador Avanzado de Neuroanatomía y Neurociencias
+ https://sepreciadolo.github.io/elquizneuroanato.github.io/ 
 
-¡Bienvenidos! Este es un simulador interactivo de preguntas de opción múltiple de alto nivel, diseñado específicamente para residentes de Neurología Clínica (R2+), con un enfoque profundo en neuroanatomía funcional, movimientos anormales y ciencias básicas.
+🧠   Este es un simulador interactivo de preguntas de opción múltiple de alto nivel, diseñado específicamente para residentes de Neurología Clínica (R2+), con un enfoque profundo en neuroanatomía funcional, movimientos anormales y ciencias básicas.
 
 🎯 Objetivo
 
