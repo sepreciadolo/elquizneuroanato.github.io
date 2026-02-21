@@ -31,17 +31,38 @@
                 <div id="progress-bar" class="bg-indigo-400 h-2 rounded-full" style="width: 0%"></div>
             </div>
         </div>
-  <!-- Filtro de Temas (Pegar aquí) -->
-            <div class="mt-5 flex flex-wrap gap-2" id="topic-filters">
-                <button onclick="filterTopic('Todos')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-200 text-indigo-900 hover:bg-indigo-300 transition">Todos</button>
-                <button onclick="filterTopic('Ganglios Basales')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Ganglios Basales</button>
-                <button onclick="filterTopic('Sinapsis')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Sinapsis</button>
-                <button onclick="filterTopic('Corteza')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Corteza</button>
-                <button onclick="filterTopic('Cerebelo')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Cerebelo</button>
-                <button onclick="filterTopic('Tallo')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Tallo/Pares</button>
-                <button onclick="filterTopic('Vascular')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Vascular</button>
-                <button onclick="filterTopic('Conectoma')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Conectoma</button>
+<div class="bg-indigo-900 text-white p-6 rounded-t-2xl">
+            <h1 class="text-2xl font-bold">Simulador de Neuroanatomía</h1>
+            <p class="text-indigo-200 mt-1">Nivel: Residencia (R2) - Movimientos Anormales y Neurociencia</p>
+            
+            <div class="mt-4 flex flex-wrap justify-between items-center text-sm font-medium gap-2">
+                <span id="question-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Pregunta 1 de 85</span>
+                
+                <div class="flex gap-2 items-center">
+                    <span id="score-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">Puntuación: 0</span>
+                    <span id="percentage-tracker" class="bg-indigo-800 px-3 py-1 rounded-md">
+                        <span class="text-green-400">0% ✓</span> | <span class="text-red-400">0% ✗</span>
+                    </span>
+                </div>
             </div>
+            
+            <!-- Progress bar -->
+            <div class="w-full bg-indigo-950 rounded-full h-2 mt-3">
+                <div id="progress-bar" class="bg-indigo-400 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Filtro de Temas Mejorado -->
+        <div class="bg-white border-b border-slate-100 px-6 py-4 flex flex-wrap gap-2 shadow-sm" id="topic-filters">
+            <button onclick="filterTopic('Todos')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
+            <button onclick="filterTopic('Ganglios Basales')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Ganglios Basales</button>
+            <button onclick="filterTopic('Sinapsis')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Sinapsis</button>
+            <button onclick="filterTopic('Corteza')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Corteza</button>
+            <button onclick="filterTopic('Cerebelo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Cerebelo</button>
+            <button onclick="filterTopic('Tallo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Tallo/Pares</button>
+            <button onclick="filterTopic('Vascular')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Vascular</button>
+            <button onclick="filterTopic('Conectoma')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Conectoma</button>
+        </div>
         <!-- Quiz Container -->
         <div id="quiz-container" class="p-6 md:p-8">
             <h2 id="question-text" class="text-xl font-semibold text-slate-800 mb-6 leading-relaxed">
@@ -1368,13 +1389,13 @@
                 questions = database.filter(q => q.topic.includes(topic));
             }
             
-            // Cambiar los colores de los botones para saber cuál está activo
+             // Cambiar los colores de los botones para saber cuál está activo (Nuevo Diseño)
             const buttons = document.querySelectorAll('#topic-filters button');
             buttons.forEach(btn => {
                 if (btn.textContent.includes(topic) || topic === 'Todos' && btn.textContent === 'Todos' || topic === 'Tallo' && btn.textContent === 'Tallo/Pares') {
-                    btn.className = 'px-3 py-1 text-xs font-semibold rounded-full bg-indigo-200 text-indigo-900 hover:bg-indigo-300 transition';
+                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition';
                 } else {
-                    btn.className = 'px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition';
+                    btn.className = 'px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition';
                 }
             });
 
@@ -1385,6 +1406,12 @@
         // Variables de estado
         let currentQuestionIndex = 0;
         let score = 0;
+        let answeredCount = 0; // NUEVA VARIABLE para rastrear las respondidas
+
+        // Elementos del DOM
+        const questionTracker = document.getElementById('question-tracker');
+        const scoreTracker = document.getElementById('score-tracker');
+        const percentageTracker = document.getElementById('percentage-tracker'); // NUEVO ELEMENTO
 
         // Elementos del DOM
         const questionTracker = document.getElementById('question-tracker');
@@ -1402,23 +1429,35 @@
         const finalScore = document.getElementById('final-score');
         const finalMessage = document.getElementById('final-message');
 
-        // Inicializar el quiz
+      // Inicializar el quiz
         function initQuiz() {
             currentQuestionIndex = 0;
             score = 0;
+            answeredCount = 0; // Reiniciamos el contador de respondidas
             quizContainer.classList.remove('hidden');
             resultsContainer.classList.add('hidden');
             updateTracker();
             loadQuestion();
         }
 
-        // Actualizar contadores y barra de progreso
+        // Actualizar contadores, barra de progreso y porcentajes
         function updateTracker() {
             questionTracker.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
             scoreTracker.textContent = `Puntuación: ${score}`;
+            
+            // Lógica de cálculo de porcentajes
+            if (answeredCount > 0) {
+                const percCorrect = Math.round((score / answeredCount) * 100);
+                const percIncorrect = 100 - percCorrect;
+                percentageTracker.innerHTML = `<span class="text-green-400">${percCorrect}% ✓</span> | <span class="text-red-400">${percIncorrect}% ✗</span>`;
+            } else {
+                percentageTracker.innerHTML = `<span class="text-green-400">0% ✓</span> | <span class="text-red-400">0% ✗</span>`;
+            }
+
             const progress = ((currentQuestionIndex) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
+
 
         // Cargar una pregunta
         function loadQuestion() {
@@ -1471,7 +1510,8 @@
                 feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 border-red-200 text-red-800';
                 feedbackTitle.textContent = 'Respuesta Incorrecta';
             }
-
+ answeredCount++;
+            updateTracker();
             // Mostrar retroalimentación
             feedbackText.textContent = currentQ.feedback;
             feedbackContainer.classList.remove('hidden');
@@ -1518,3 +1558,4 @@
 </body>
 
 </html>
+
