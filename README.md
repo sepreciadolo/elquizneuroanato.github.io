@@ -36,7 +36,7 @@ Al final, obtendrás tu puntaje total.
 
 👨‍⚕️ Autor
 
-Sebastián Residente de Neurología Clínica (R2)
+Sebastian Residente de Neurología Clínica (R2)
 
 Universidad Nacional de Colombia
 
