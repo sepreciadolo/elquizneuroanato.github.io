@@ -31,7 +31,17 @@
                 <div id="progress-bar" class="bg-indigo-400 h-2 rounded-full" style="width: 0%"></div>
             </div>
         </div>
-
+  <!-- Filtro de Temas (Pegar aquí) -->
+            <div class="mt-5 flex flex-wrap gap-2" id="topic-filters">
+                <button onclick="filterTopic('Todos')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-200 text-indigo-900 hover:bg-indigo-300 transition">Todos</button>
+                <button onclick="filterTopic('Ganglios Basales')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Ganglios Basales</button>
+                <button onclick="filterTopic('Sinapsis')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Sinapsis</button>
+                <button onclick="filterTopic('Corteza')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Corteza</button>
+                <button onclick="filterTopic('Cerebelo')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Cerebelo</button>
+                <button onclick="filterTopic('Tallo')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Tallo/Pares</button>
+                <button onclick="filterTopic('Vascular')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Vascular</button>
+                <button onclick="filterTopic('Conectoma')" class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition">Conectoma</button>
+            </div>
         <!-- Quiz Container -->
         <div id="quiz-container" class="p-6 md:p-8">
             <h2 id="question-text" class="text-xl font-semibold text-slate-800 mb-6 leading-relaxed">
@@ -71,7 +81,7 @@
 
     <script>
         // Base de datos de preguntas (Nivel Avanzado - R2)
-       const questions = [
+       let questions = [
   { topic: "Pares Craneales", question: "En el reflejo fotomotor, ¿qué estructura del mesencéfalo recibe la proyección pretectal bilateral que activa la vía parasimpática eferente?", options: ["Núcleo de Perlia", "Núcleo de Edinger–Westphal (accesorio del III) bilateral", "Núcleo intersticial de Cajal", "Colículo superior"], correct: 1, feedback: "Correcto: la región pretectal proyecta bilateralmente a Edinger–Westphal, explicando miosis directa y consensual." },
   { topic: "Pares Craneales", question: "Una lesión que compromete el fascículo longitudinal medial (FLM) causa oftalmoplejía internuclear. ¿Qué componente motor queda típicamente deficitario en el ojo ipsilateral a la lesión durante la mirada conjugada lateral?", options: ["Abducción por VI", "Aducción por III", "Elevación por IV", "Depresión por III (recto inferior)"], correct: 1, feedback: "Correcto: se pierde la señal internuclear hacia el subnúcleo del recto medial (III), fallando la aducción ipsilateral." },
   { topic: "Pares Craneales", question: "La disociación 'parálisis supranuclear de la mirada vertical' sugiere compromiso de circuitos del mesencéfalo dorsal. ¿Qué núcleo es clave para las sacadas verticales?", options: ["PPRF", "riMLF (núcleo intersticial rostral del FLM)", "Núcleo de Darkschewitsch", "Núcleo motor del IV"], correct: 1, feedback: "Correcto: el riMLF es el generador principal de sacadas verticales; PPRF es horizontal." },
@@ -1347,6 +1357,31 @@
             }
         ];
 
+           // Pegar debajo del cierre ]; de tus preguntas
+        const database = [...questions]; // Guarda la base original intacta
+
+        function filterTopic(topic) {
+            // Filtrar las preguntas
+            if (topic === 'Todos') {
+                questions = [...database];
+            } else {
+                questions = database.filter(q => q.topic.includes(topic));
+            }
+            
+            // Cambiar los colores de los botones para saber cuál está activo
+            const buttons = document.querySelectorAll('#topic-filters button');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(topic) || topic === 'Todos' && btn.textContent === 'Todos' || topic === 'Tallo' && btn.textContent === 'Tallo/Pares') {
+                    btn.className = 'px-3 py-1 text-xs font-semibold rounded-full bg-indigo-200 text-indigo-900 hover:bg-indigo-300 transition';
+                } else {
+                    btn.className = 'px-3 py-1 text-xs font-semibold rounded-full bg-indigo-800 text-indigo-100 border border-indigo-700 hover:bg-indigo-700 transition';
+                }
+            });
+
+            // Reiniciar el quiz con las nuevas preguntas
+            initQuiz();
+        }
+
         // Variables de estado
         let currentQuestionIndex = 0;
         let score = 0;
@@ -1481,4 +1516,5 @@
         initQuiz();
     </script>
 </body>
+
 </html>
