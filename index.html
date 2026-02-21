@@ -83,8 +83,9 @@
         </div>
 
         <!-- Filtros de Temas -->
-        <div class="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 px-6 py-4 flex flex-nowrap overflow-x-auto hide-scrollbar gap-2 shadow-sm" id="topic-filters">
+        <div class="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 px-6 py-4 flex flex-wrap gap-2 shadow-sm" id="topic-filters">
             <button onclick="filterTopic('Todos')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
+            <button onclick="filterTopic('Caso Clínico')" class="shrink-0 px-4 py-1.5 text-sm font-bold rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-200 dark:hover:bg-emerald-800 transition">🩺 Casos Clínicos</button>
             <button onclick="filterTopic('Ganglios Basales')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Ganglios Basales</button>
             <button onclick="filterTopic('Sinapsis')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Sinapsis</button>
             <button onclick="filterTopic('Corteza')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Corteza</button>
@@ -92,8 +93,7 @@
             <button onclick="filterTopic('Tallo')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Tallo/Pares</button>
             <button onclick="filterTopic('Vascular')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Vascular</button>
             <button onclick="filterTopic('Conectoma')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Conectoma</button>
-            <button onclick="filterTopic('Caso Clínico')" class="shrink-0 px-4 py-1.5 text-sm font-bold rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-200 dark:hover:bg-emerald-800 transition">🩺 Casos Clínicos</button>
-        </div>
+                    </div>
 
         <!-- Barra de Buscador y Botón Aleatorio -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-6 py-3 flex flex-col md:flex-row gap-3 justify-between items-center shadow-inner">
@@ -3958,4 +3958,5 @@ const moreQuestions = [
     </script>
 </body>
 </html>
+
 
