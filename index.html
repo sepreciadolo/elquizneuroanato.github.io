@@ -19,7 +19,7 @@
 
     <div id="app" class="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
         
-        <!-- Header Único y Corregido -->
+        <!-- Header -->
         <div class="bg-indigo-900 text-white p-6 rounded-t-2xl">
             <h1 class="text-2xl font-bold">Simulador de Neuroanatomía</h1>
             <p class="text-indigo-200 mt-1">Nivel: Residencia (R2) - Movimientos Anormales y Neurociencia</p>
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <!-- Filtro de Temas -->
+        <!-- Filtros de Temas -->
         <div class="bg-white border-b border-slate-100 px-6 py-4 flex flex-wrap gap-2 shadow-sm" id="topic-filters">
             <button onclick="filterTopic('Todos')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition">Todos</button>
             <button onclick="filterTopic('Ganglios Basales')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Ganglios Basales</button>
@@ -51,7 +51,17 @@
             <button onclick="filterTopic('Tallo')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Tallo/Pares</button>
             <button onclick="filterTopic('Vascular')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Vascular</button>
             <button onclick="filterTopic('Conectoma')" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">Conectoma</button>
-            <!-- Nota: Si creaste temas nuevos en tus 300 preguntas, puedes agregar más botones aquí siguiendo el mismo formato -->
+        </div>
+
+        <!-- Barra de Buscador y Botón Aleatorio -->
+        <div class="bg-slate-50 border-b border-slate-200 px-6 py-3 flex flex-col md:flex-row gap-3 justify-between items-center shadow-inner">
+            <div class="relative w-full md:w-2/3">
+                <span class="absolute left-3 top-2 text-slate-400">🔍</span>
+                <input type="text" id="search-input" placeholder="Buscar palabra clave, síndrome o epónimo..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 outline-none text-sm transition shadow-sm">
+            </div>
+            <button onclick="shuffleCurrentQuestions()" class="w-full md:w-auto px-4 py-2 text-sm font-bold rounded-lg bg-amber-400 text-amber-900 shadow hover:bg-amber-500 hover:shadow-md transition flex items-center justify-center gap-2">
+                🔀 Mezclar
+            </button>
         </div>
 
         <!-- Quiz Container -->
@@ -67,9 +77,9 @@
             <div id="feedback-container" class="mt-6 hidden">
                 <div id="feedback-alert" class="p-4 rounded-lg border">
                     <p id="feedback-title" class="font-bold mb-1"></p>
-                    <p id="feedback-text" class="text-sm"></p>
+                    <p id="feedback-text" class="text-sm mt-1 leading-relaxed"></p>
                 </div>
-                <button id="next-btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                <button id="next-btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
                     Siguiente Pregunta
                 </button>
             </div>
@@ -85,9 +95,14 @@
             </div>
             <p id="final-message" class="text-lg font-medium text-slate-700 mb-8"></p>
 
-            <button onclick="initQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
-                Reiniciar Examen
-            </button>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                <button id="retry-btn" onclick="retryIncorrect()" class="hidden bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
+                    ↻ Repasar Errores (<span id="errors-count">0</span>)
+                </button>
+                <button onclick="restartFull()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md">
+                    ↺ Reiniciar Tema
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1372,11 +1387,11 @@
                 feedback: "¡Brillante! Esta es la clásica 'neuralgia vagoglosofaríngea con síncope'. El nervio de Hering (rama del IX par) lleva aferencias barorreceptoras al núcleo del tracto solitario (NTS). Un dolor intenso en el territorio del IX sobreestimula artificialmente el NTS, el cual activa el núcleo dorsal del Vago (X par), generando una descarga parasimpática masiva (bradicardia/asistolia y síncope)."
             }
         ];
+  // Variables de Estado Dinámicas
+        let currentTopicDB = [...allQuestionsDB]; // Base de datos filtrada por el tema actual
+        let questions = [...currentTopicDB];      // Preguntas activas (pueden estar mezcladas o filtradas por buscador)
+        let incorrectQuestions = [];              // Guarda las que el usuario responde mal
 
-             // Variable dinámica para manejar los filtros sin perder la base original
-        let questions = [...allQuestionsDB];
-
-        // Variables de estado
         let currentQuestionIndex = 0;
         let score = 0;
         let answeredCount = 0;
@@ -1397,14 +1412,18 @@
         const resultsContainer = document.getElementById('results-container');
         const finalScore = document.getElementById('final-score');
         const finalMessage = document.getElementById('final-message');
+        const searchInput = document.getElementById('search-input');
 
-        // Función para filtrar por tema
+        // 1. Función para filtrar por tema (Botones Superiores)
         function filterTopic(topic) {
+            searchInput.value = ''; // Limpiar buscador al cambiar de tema
+            
             if (topic === 'Todos') {
-                questions = [...allQuestionsDB];
+                currentTopicDB = [...allQuestionsDB];
             } else {
-                questions = allQuestionsDB.filter(q => q.topic.includes(topic));
+                currentTopicDB = allQuestionsDB.filter(q => q.topic.includes(topic));
             }
+            questions = [...currentTopicDB];
             
             // Cambiar los colores de los botones
             const buttons = document.querySelectorAll('#topic-filters button');
@@ -1416,21 +1435,50 @@
                 }
             });
 
-            // Reiniciar el quiz con las nuevas preguntas filtradas
-            initQuiz();
+            initQuiz(true);
         }
 
-        // Inicializar el quiz
-        function initQuiz() {
+        // 2. Función para Mezclar Preguntas (Shuffle)
+        function shuffleCurrentQuestions() {
+            // Algoritmo Fisher-Yates para mezclar el array
+            for (let i = questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questions[i], questions[j]] = [questions[j], questions[i]];
+            }
+            initQuiz(true); // Reiniciar el quiz con el nuevo orden
+        }
+
+        // 3. Función del Buscador en tiempo real
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            if(term === '') {
+                questions = [...currentTopicDB]; // Si borran el texto, vuelve al tema original
+            } else {
+                // Filtra buscando en la pregunta, el feedback o el tema
+                questions = currentTopicDB.filter(q => 
+                    q.question.toLowerCase().includes(term) || 
+                    q.feedback.toLowerCase().includes(term) || 
+                    q.topic.toLowerCase().includes(term)
+                );
+            }
+            initQuiz(true);
+        });
+
+        // 4. Inicializar o Reiniciar el Quiz
+        // resetErrors = true limpia la memoria de errores. Si es false, estamos en modo "Repasar Errores"
+        function initQuiz(resetErrors = true) {
             currentQuestionIndex = 0;
             score = 0;
             answeredCount = 0;
+            if (resetErrors) incorrectQuestions = []; 
+            
             quizContainer.classList.remove('hidden');
             resultsContainer.classList.add('hidden');
             
             if(questions.length === 0) {
-                questionText.innerHTML = "No hay preguntas para este tema.";
+                questionText.innerHTML = "No se encontraron preguntas. Intenta con otra palabra clave.";
                 optionsContainer.innerHTML = '';
+                updateTracker();
                 return;
             }
 
@@ -1438,25 +1486,42 @@
             loadQuestion();
         }
 
+        // Función auxiliar para Reiniciar todo el bloque actual
+        function restartFull() {
+            questions = [...currentTopicDB];
+            initQuiz(true);
+        }
+
+        // Función para el modo "Repasar Errores"
+        function retryIncorrect() {
+            questions = [...incorrectQuestions];
+            initQuiz(true); // Reiniciamos los contadores, pero ahora solo jugamos con las malas
+        }
+
         // Actualizar contadores y barra de progreso
         function updateTracker() {
-            questionTracker.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+            if(questions.length === 0) {
+                questionTracker.textContent = `0 de 0`;
+                progressBar.style.width = `0%`;
+            } else {
+                questionTracker.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+                const progress = ((currentQuestionIndex) / questions.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
             scoreTracker.textContent = `Puntuación: ${score}`;
             
             // Lógica de cálculo de porcentajes
             if (answeredCount > 0) {
                 const percCorrect = Math.round((score / answeredCount) * 100);
                 const percIncorrect = 100 - percCorrect;
-                percentageTracker.innerHTML = `<span class="text-green-400">${percCorrect}% ✓</span> | <span class="text-red-400">${percIncorrect}% ✗</span>`;
+                percentageTracker.innerHTML = `<span class="text-green-400">${percCorrect}% ✓</span> <span class="text-slate-400 mx-1">|</span> <span class="text-red-400">${percIncorrect}% ✗</span>`;
             } else {
-                percentageTracker.innerHTML = `<span class="text-green-400">0% ✓</span> | <span class="text-red-400">0% ✗</span>`;
+                percentageTracker.innerHTML = `<span class="text-green-400">0% ✓</span> <span class="text-slate-400 mx-1">|</span> <span class="text-red-400">0% ✗</span>`;
             }
-
-            const progress = ((currentQuestionIndex) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
         }
 
-        // Cargar una pregunta
+        // Cargar una pregunta a la pantalla
         function loadQuestion() {
             const currentQ = questions[currentQuestionIndex];
             
@@ -1498,13 +1563,18 @@
             // Lógica de aciertos/errores
             if (isCorrect) {
                 score++;
-                feedbackAlert.className = 'p-4 rounded-lg border bg-green-50 border-green-200 text-green-800';
+                feedbackAlert.className = 'p-4 rounded-lg border bg-green-50 border-green-200 text-green-900';
                 feedbackTitle.textContent = '¡Respuesta Correcta!';
             } else {
                 selectedButton.classList.remove('border-slate-200');
                 selectedButton.classList.add('incorrect');
-                feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 border-red-200 text-red-800';
+                feedbackAlert.className = 'p-4 rounded-lg border bg-red-50 border-red-200 text-red-900';
                 feedbackTitle.textContent = 'Respuesta Incorrecta';
+                
+                // Si la falla, la guardamos en el array de incorrectas para poder repasarla después
+                if (!incorrectQuestions.includes(currentQ)) {
+                    incorrectQuestions.push(currentQ);
+                }
             }
 
             // Actualizar contadores globales en tiempo real
@@ -1512,7 +1582,7 @@
             updateTracker();
 
             // Mostrar retroalimentación
-            feedbackText.textContent = currentQ.feedback;
+            feedbackText.innerHTML = currentQ.feedback;
             feedbackContainer.classList.remove('hidden');
 
             // Mover la barra de progreso
@@ -1548,9 +1618,19 @@
             } else {
                 finalMessage.textContent = "Es un examen con nivel de subespecialidad. Usa las retroalimentaciones como guía de estudio.";
             }
+
+            // Mostrar botón de repasar errores si falló al menos una
+            const retryBtn = document.getElementById('retry-btn');
+            const errorsCount = document.getElementById('errors-count');
+            if(incorrectQuestions.length > 0) {
+                retryBtn.classList.remove('hidden');
+                errorsCount.textContent = incorrectQuestions.length;
+            } else {
+                retryBtn.classList.add('hidden');
+            }
         }
 
-        // Iniciar la app
+        // Iniciar la app por primera vez
         initQuiz();
     </script>
 </body>
