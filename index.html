@@ -93,7 +93,14 @@
             <button onclick="filterTopic('Tallo')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Tallo/Pares</button>
             <button onclick="filterTopic('Vascular')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Vascular</button>
             <button onclick="filterTopic('Conectoma')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Conectoma</button>
-                    </div>
+               <!-- Nuevas Categorías -->
+            <button onclick="filterTopic('Barrera Hematoencefálica')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">BHE</button>
+            <button onclick="filterTopic('Glinfático')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Glinfático</button>
+            <button onclick="filterTopic('Sustancia Blanca')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Sustancia Blanca</button>
+            <button onclick="filterTopic('Citoarquitectura')" class="shrink-0 px-4 py-1.5 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-600 transition">Citoarquitectura</button>
+       
+        
+        </div>
 
         <!-- Barra de Buscador y Botón Aleatorio -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-6 py-3 flex flex-col md:flex-row gap-3 justify-between items-center shadow-inner">
@@ -3492,6 +3499,1089 @@ const moreQuestions = [
     ],
     correct: 0,
     feedback: "Correcto: SCA irriga cerebelo superior y regiones cercanas al pedúnculo superior, crítico para salida cerebelosa."
+  },
+  // =========================
+  // Barrera hematoencefálica (30)
+  // =========================
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Mujer de 28 años con neuritis óptica y lesiones periventriculares. En RM con gadolinio, una lesión realza en anillo incompleto. ¿Qué evento microestructural en la barrera hematoencefálica explica mejor el realce?",
+    options: [
+      "Aumento de transporte de glucosa (GLUT1) sin daño estructural",
+      "Apertura paracelular por disrupción de uniones estrechas endoteliales",
+      "Disminución de drenaje glinfático por AQP4",
+      "Hiperpolarización astrocitaria por GABA-B"
+    ],
+    correct: 1,
+    feedback: "Correcto: el realce con gadolinio sugiere aumento de permeabilidad, típicamente por alteración de uniones estrechas y/o transitosis en endotelio de la unidad neurovascular."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál componente es el principal determinante inmediato de la baja permeabilidad paracelular en capilares cerebrales?",
+    options: [
+      "Uniones estrechas (claudinas/occludina/ZO) entre células endoteliales",
+      "Capa granular IV cortical",
+      "Meninges (duramadre) como sello principal",
+      "Nódulos de Ranvier"
+    ],
+    correct: 0,
+    feedback: "Correcto: la restricción paracelular depende sobre todo de uniones estrechas del endotelio cerebral."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: En un modelo experimental, al aumentar la expresión de MFSD2A en endotelio cerebral se reduce la captación inespecífica de trazadores. ¿Qué mecanismo explica mejor este efecto?",
+    options: [
+      "Aumenta el transporte paracelular al reforzar fenestraciones",
+      "Suprime la transitosis vesicular endotelial (pinocitosis) y estabiliza la BBB",
+      "Bloquea el transporte de lactato (MCT) en neuronas",
+      "Despolariza pericitos y abre uniones gap"
+    ],
+    correct: 1,
+    feedback: "Correcto: MFSD2A se asocia a menor transitosis endotelial, una pieza clave del fenotipo de BBB."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Paciente con encefalopatía hipertensiva y clínica compatible con PRES. ¿Qué vulnerabilidad regional de la BBB se discute con frecuencia para explicar la predilección posterior?",
+    options: [
+      "Mayor densidad de uniones estrechas en regiones posteriores",
+      "Menor inervación simpática protectora en circulación posterior",
+      "Ausencia de astrocitos en lóbulos occipitales",
+      "Fenestraciones fisiológicas en corteza calcarina"
+    ],
+    correct: 1,
+    feedback: "Correcto: se invoca menor control simpático en circulación posterior, facilitando hiperperfusión, disfunción endotelial y edema vasogénico."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál transportador explica mejor el ingreso facilitado de glucosa al SNC a través de la BBB?",
+    options: [
+      "GLUT1 endotelial",
+      "DAT presináptico",
+      "EAAT2 astrocitario",
+      "Aquaporina-4"
+    ],
+    correct: 0,
+    feedback: "Correcto: GLUT1 en endotelio cerebral media el transporte de glucosa hacia el parénquima."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Dos fármacos lipofílicos cruzan BBB por difusión, pero uno muestra baja concentración cerebral pese a alta liposolubilidad. ¿Qué propiedad de la BBB lo explica mejor?",
+    options: [
+      "Eflujo activo por bombas tipo P-gp/BCRP",
+      "Ausencia de membrana basal",
+      "Fenestraciones endoteliales generalizadas",
+      "Baja perfusión cerebral global constante"
+    ],
+    correct: 0,
+    feedback: "Correcto: transportadores de eflujo (p. ej., P-gp/ABCB1) reducen acumulación cerebral de muchos compuestos lipofílicos."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Infección bacteriana meníngea con pleocitosis y proteínas elevadas. ¿Qué cambio de barrera es más directo para explicar hiperproteinorraquia?",
+    options: [
+      "Disfunción de barrera hematoencefálica y/o barrera sangre-LCR con aumento de permeabilidad",
+      "Aumento de síntesis de mielina",
+      "Hiperactividad del núcleo reticular talámico",
+      "Potenciación de LTP en hipocampo"
+    ],
+    correct: 0,
+    feedback: "Correcto: inflamación aumenta permeabilidad (BBB y/o barrera sangre-LCR), facilitando paso de proteínas."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál estructura define mejor la “unidad neurovascular” como concepto funcional?",
+    options: [
+      "Endotelio + pericitos + membrana basal + pies astrocitarios + neuronas/interneuronas y microglía asociada",
+      "Solo endotelio y eritrocitos",
+      "Solo astrocitos y oligodendrocitos",
+      "Solo meninges y plexo coroideo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la unidad neurovascular integra componentes vasculares y neurales que co-regulan flujo, permeabilidad y señalización."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Esclerosis múltiple activa: aumento de ICAM-1/VCAM-1 endotelial y migración leucocitaria. ¿Qué paso celular describe mejor este proceso?",
+    options: [
+      "Rodamiento, adhesión firme e invaginación transendotelial (diapédesis) dependiente de moléculas de adhesión",
+      "Difusión pasiva de leucocitos a través de mielina",
+      "Transporte axonal retrógrado por dineína",
+      "Endocitosis mediada por clatrina de oligodendrocitos"
+    ],
+    correct: 0,
+    feedback: "Correcto: en neuroinflamación, el endotelio expresa moléculas de adhesión que permiten extravasación ordenada de leucocitos."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál región NO está protegida por una BBB “clásica” debido a órganos circunventriculares fenestrados?",
+    options: [
+      "Área postrema",
+      "Corteza motora primaria",
+      "Cuerpo calloso",
+      "Putamen"
+    ],
+    correct: 0,
+    feedback: "Correcto: órganos circunventriculares (p. ej., área postrema) tienen capilares fenestrados y permeabilidad distinta."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Paciente con NMOSD y vómito intratable; se sospecha área postrema. ¿Qué particularidad vascular-funcional hace esta región vulnerable?",
+    options: [
+      "Capilares fenestrados con barrera más laxa (órgano circunventricular)",
+      "Ausencia de microglía",
+      "Predominio de capa IV hipergranular",
+      "No recibe aferencias vagales"
+    ],
+    correct: 0,
+    feedback: "Correcto: el área postrema es órgano circunventricular, con permeabilidad distinta y vulnerabilidad inmunológica."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál barrera es la principal interfaz epitelial entre sangre y LCR en condiciones normales?",
+    options: [
+      "Barrera sangre-LCR del plexo coroideo (epitelio coroideo con uniones estrechas)",
+      "Endotelio cortical (BBB) como barrera sangre-LCR primaria",
+      "Duramadre como barrera sangre-LCR",
+      "Piamadre como barrera sangre-LCR"
+    ],
+    correct: 0,
+    feedback: "Correcto: la barrera sangre-LCR se sitúa en el epitelio del plexo coroideo, no en el endotelio fenestrado del plexo."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Tras isquemia-reperfusión, se observa aumento de MMPs y edema vasogénico. ¿Qué blanco estructural de MMPs es más relevante para permeabilidad?",
+    options: [
+      "Lámina basal y proteínas de uniones estrechas",
+      "Receptores AMPA postsinápticos",
+      "Tubulina axonal",
+      "Canales de Na+ del AIS"
+    ],
+    correct: 0,
+    feedback: "Correcto: MMPs degradan matriz/lámina basal y perturban uniones estrechas, facilitando edema vasogénico."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál distinción describe mejor el paso de sustancias a través de BBB?",
+    options: [
+      "Paracelular (muy restringido) vs transcelular (difusión y transportes específicos/vesiculares)",
+      "Axonal vs dendrítico",
+      "Somático vs nuclear",
+      "Talámico vs cortical"
+    ],
+    correct: 0,
+    feedback: "Correcto: la BBB restringe fuertemente el paso paracelular; el tránsito ocurre principalmente por rutas transcelulares reguladas."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Se diseña un biológico grande para entrar al SNC usando el receptor de transferrina. ¿Qué estrategia de transporte se está explotando?",
+    options: [
+      "Transcitosis mediada por receptor",
+      "Difusión paracelular por tight junctions",
+      "Conducción saltatoria",
+      "Transporte axonal anterógrado"
+    ],
+    correct: 0,
+    feedback: "Correcto: algunos receptores endoteliales permiten transcitosis mediada por receptor, útil para “shuttles” a SNC."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Hiperamonemia con edema cerebral. ¿Qué tipo de edema se asocia más a astrocitos (hinchazón celular) que a ruptura franca de BBB?",
+    options: [
+      "Edema citotóxico",
+      "Edema vasogénico",
+      "Hidrocefalia obstructiva",
+      "Edema intersticial por ruptura ependimaria"
+    ],
+    correct: 0,
+    feedback: "Correcto: el edema citotóxico implica hinchazón celular (frecuente en astrocitos) sin necesidad de ruptura marcada de BBB."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Qué componente celular se asocia fuertemente a maduración/estabilidad de BBB durante el desarrollo y mantenimiento?",
+    options: [
+      "Pericitos",
+      "Células de Purkinje",
+      "Motoneuronas alfa",
+      "Células ependimarias como principal soporte"
+    ],
+    correct: 0,
+    feedback: "Correcto: pericitos regulan angiogénesis, estabilidad vascular y propiedades de barrera del endotelio cerebral."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Edema vasogénico por tumor metastásico: aumento de permeabilidad peritumoral. ¿Qué hallazgo de imagen se correlaciona mejor con vasogénico?",
+    options: [
+      "Hiperintensidad en T2/FLAIR en sustancia blanca con realce por gadolinio",
+      "Restricción marcada en DWI con ADC bajo en corteza",
+      "Calcificaciones simétricas en ganglios basales",
+      "Hiperseñal exclusiva en T1 sin contraste"
+    ],
+    correct: 0,
+    feedback: "Correcto: el edema vasogénico predomina en sustancia blanca, se asocia a fuga y puede acompañarse de realce."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál afirmación integra mejor el rol de astrocitos en BBB?",
+    options: [
+      "Inducen y modulan fenotipo de barrera (señalización) más que ser el “sello” físico primario",
+      "Forman uniones estrechas equivalentes a endotelio",
+      "Sustituyen completamente al endotelio en capilares cerebrales",
+      "Son irrelevantes para homeostasis iónica"
+    ],
+    correct: 0,
+    feedback: "Correcto: los pies astrocitarios modulan barrera y homeostasis, pero el sello paracelular lo dan las uniones estrechas endoteliales."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: VIH con neuroinflamación crónica. ¿Qué cambio de BBB favorece entrada sostenida de células inmunes?",
+    options: [
+      "Upregulation de moléculas de adhesión y quimiocinas en endotelio",
+      "Aumento de mielinización en cápsula interna",
+      "Disminución de perfusión cortical global como mecanismo primario",
+      "Aumento de inhibición GABA-A en interneuronas PV"
+    ],
+    correct: 0,
+    feedback: "Correcto: la activación endotelial promueve adhesión y tráfico leucocitario persistente hacia SNC."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál diferencia separa BBB capilar cerebral de capilares sistémicos típicos?",
+    options: [
+      "Baja transitosis y alta expresión de uniones estrechas + transportes selectivos",
+      "Mayor fenestración y mayor fuga paracelular",
+      "Ausencia de membrana basal",
+      "Ausencia de células endoteliales"
+    ],
+    correct: 0,
+    feedback: "Correcto: el endotelio cerebral es especializado: tight junctions, baja transitosis y transportadores/eflujo selectivos."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: En una encefalitis autoinmune, la RM muestra realce leptomeníngeo. ¿Qué barrera/región se relaciona más con este patrón superficial?",
+    options: [
+      "Interfaces meníngeas y vasos piales (barreras meníngeas) más que capilares profundos",
+      "Solo plexo coroideo",
+      "Solo cápsula interna",
+      "Solo tálamo paramediano"
+    ],
+    correct: 0,
+    feedback: "Correcto: el realce leptomeníngeo sugiere compromiso de compartimentos meníngeos/vasos piales y sus barreras."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Uso de manitol intraarterial para abrir BBB de forma transitoria en quimioterapia. ¿Qué mecanismo físico se busca?",
+    options: [
+      "Contracción osmótica endotelial y apertura transitoria de uniones estrechas",
+      "Aumento de bombas de eflujo P-gp",
+      "Bloqueo de GLUT1",
+      "Inducción de mielinización"
+    ],
+    correct: 0,
+    feedback: "Correcto: la disrupción osmótica transitoria separa uniones estrechas, aumentando permeabilidad para fármacos."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Qué evento describe mejor la “ruptura” de BBB en términos de compartimentos?",
+    options: [
+      "Paso de proteínas plasmáticas y agua al espacio extracelular cerebral (vasogénico)",
+      "Aumento de potencial de acción neuronal",
+      "Aumento de sinapsis eléctricas",
+      "Activación exclusiva del cerebelo"
+    ],
+    correct: 0,
+    feedback: "Correcto: la ruptura permite extravasación de proteínas y agua, causando edema vasogénico e inflamación secundaria."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Paciente con hipoalbuminemia severa: riesgo de edema periférico. ¿Por qué esto NO se traduce automáticamente en edema cerebral vasogénico masivo?",
+    options: [
+      "Porque la BBB limita el paso de proteínas y mantiene gradientes, desacoplando presión oncótica plasmática del intersticio cerebral",
+      "Porque el cerebro no tiene agua",
+      "Porque los capilares cerebrales son fenestrados",
+      "Porque el LCR reemplaza al plasma sin barreras"
+    ],
+    correct: 0,
+    feedback: "Correcto: la BBB restringe fuga proteica; el acoplamiento oncótico al intersticio cerebral es distinto al periférico."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Se observa aumento de transitosis caveolar en endotelio cerebral sin gran disrupción de tight junctions. ¿Qué tipo de fuga predomina?",
+    options: [
+      "Ruta transcelular vesicular",
+      "Ruta paracelular exclusiva",
+      "Ruta axonal",
+      "Ruta sináptica"
+    ],
+    correct: 0,
+    feedback: "Correcto: un aumento de transitosis implica fuga transcelular (vesicular), aunque tight junctions estén relativamente conservadas."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Qué célula es más relevante para presentar antígeno y regular microambiente inmune dentro del parénquima (no el endotelio) en neuroinflamación crónica?",
+    options: [
+      "Microglía",
+      "Eritrocito",
+      "Célula de Schwann",
+      "Célula de Purkinje"
+    ],
+    correct: 0,
+    feedback: "Correcto: microglía es el macrófago residente y modulador clave de respuestas inmunes en SNC."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Un paciente con tumor y edema perilesional mejora con corticoides. ¿Qué efecto sobre BBB explica mejor la mejoría del edema vasogénico?",
+    options: [
+      "Estabilización endotelial y reducción de permeabilidad/inflamación perivascular",
+      "Aumento de Na+ neuronal",
+      "Desmielinización controlada",
+      "Activación de vías dopaminérgicas"
+    ],
+    correct: 0,
+    feedback: "Correcto: los corticoides reducen inflamación y permeabilidad vascular tumoral, disminuyendo edema vasogénico."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "¿Cuál afirmación diferencia mejor BBB de barrera sangre-LCR?",
+    options: [
+      "BBB: endotelio con uniones estrechas; sangre-LCR: epitelio coroideo con uniones estrechas y endotelio fenestrado subyacente",
+      "BBB: epitelio; sangre-LCR: endotelio siempre fenestrado sin uniones",
+      "BBB: duramadre; sangre-LCR: piamadre",
+      "No hay diferencias estructurales"
+    ],
+    correct: 0,
+    feedback: "Correcto: en plexo coroideo el sello está en el epitelio; en BBB el sello está en el endotelio capilar cerebral."
+  },
+  {
+    topic: "Barrera hematoencefálica",
+    question: "Caso: Paciente con encefalopatía séptica; sin infección directa del SNC, pero delirium. ¿Qué mecanismo de BBB es plausible?",
+    options: [
+      "Disfunción endotelial e inflamación sistémica que alteran permeabilidad y señalización neurovascular",
+      "Lesión primaria del nervio óptico",
+      "Bloqueo de radiaciones ópticas",
+      "Aumento exclusivo de LTP hipocampal"
+    ],
+    correct: 0,
+    feedback: "Correcto: mediadores inflamatorios sistémicos pueden alterar unidad neurovascular y BBB, contribuyendo a encefalopatía."
+  },
+
+  // =========================
+  // Glinfático (20)
+  // =========================
+  {
+    topic: "Glinfático",
+    question: "¿Cuál enunciado describe mejor el sistema glinfático como mecanismo de limpieza del SNC?",
+    options: [
+      "Flujo convectivo de líquido a lo largo de espacios perivasculares facilitado por astrocitos/AQP4, con intercambio con intersticio",
+      "Drenaje exclusivo por venas durales sin participación glial",
+      "Transporte axonal de desechos hacia médula",
+      "Filtración directa de LCR a sangre por BBB capilar"
+    ],
+    correct: 0,
+    feedback: "Correcto: el glinfático se conceptualiza como intercambio perivascular–intersticial facilitado por pies astrocitarios y AQP4."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Paciente con privación crónica de sueño. ¿Qué consecuencia glinfática es más plausible a nivel fisiológico?",
+    options: [
+      "Disminución de clearance de solutos intersticiales durante el sueño",
+      "Aumento sostenido de tight junctions endoteliales por activación GABA-A",
+      "Incremento de mielinización por oligodendrocitos en 24 horas",
+      "Hiperactividad permanente del núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: el sueño se asocia a mayor eficiencia de clearance intersticial; su pérdida puede reducir depuración."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Qué proteína/canal es la más citada en relación con el papel astrocitario en el flujo perivascular glinfático?",
+    options: [
+      "Aquaporina-4 (AQP4)",
+      "GLUT1",
+      "P-gp",
+      "Synaptotagmina"
+    ],
+    correct: 0,
+    feedback: "Correcto: AQP4 en pies astrocitarios se asocia a intercambio agua/solutos en la interfaz perivascular."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Traumatismo craneoencefálico leve con cefalea persistente y ‘niebla mental’. ¿Qué alteración glinfática es un mecanismo propuesto?",
+    options: [
+      "Disrupción de espacios perivasculares y despolarización de AQP4 (pérdida de polarización en endfeet)",
+      "Aumento de uniones estrechas endoteliales",
+      "Hiperactivación del tracto corticoespinal",
+      "Aumento de conducción saltatoria"
+    ],
+    correct: 0,
+    feedback: "Correcto: se ha propuesto que TCE altera perivascularidad y polarización AQP4, comprometiendo clearance."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Cuál fuerza fisiológica se considera un impulsor importante del movimiento de fluido en espacios perivasculares?",
+    options: [
+      "Pulsatilidad arterial",
+      "Potenciales de acción corticales",
+      "Contracción del músculo esquelético",
+      "Movimiento ciliar del epéndimo como único motor"
+    ],
+    correct: 0,
+    feedback: "Correcto: la pulsatilidad arterial se discute como motor de dinámica perivascular y mezcla fluida."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Envejecimiento con aumento de espacios perivasculares visibles y declive cognitivo leve. ¿Qué cambio glinfático es plausible?",
+    options: [
+      "Menor eficiencia de intercambio perivascular–intersticial y clearance",
+      "Aumento de perfusión cortical constante",
+      "Conversión de BBB en endotelio fenestrado",
+      "Aumento de densidad de capa IV en V1"
+    ],
+    correct: 0,
+    feedback: "Correcto: envejecimiento se asocia a cambios perivasculares y gliales que pueden reducir la eficiencia de depuración."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Qué relación describe mejor el vínculo entre glinfático y vasos linfáticos meníngeos?",
+    options: [
+      "El drenaje final de solutos puede conectarse a rutas meníngeas/linfáticas hacia ganglios cervicales",
+      "El glinfático termina obligatoriamente en hígado por vena porta",
+      "Los linfáticos meníngeos reemplazan totalmente al LCR",
+      "No existe interacción anatómica posible"
+    ],
+    correct: 0,
+    feedback: "Correcto: se propone acoplamiento entre flujo perivascular/intersticial y drenaje meníngeo-linfático hacia periferia."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Hidrocefalia de presión normal con marcha magnética y ventriculomegalia. ¿Qué hipótesis glinfática puede contribuir al cuadro?",
+    options: [
+      "Alteración de dinámica LCR–intersticio y clearance periventricular",
+      "Aumento de tight junctions en plexo coroideo",
+      "Daño exclusivo de radiaciones ópticas",
+      "Aumento de salida del GPi"
+    ],
+    correct: 0,
+    feedback: "Correcto: NPH se ha relacionado con alteraciones de dinámica del LCR y drenaje/clearance, especialmente periventricular."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿En qué compartimento anatómico se describe el intercambio inicial de LCR con fluido intersticial en el modelo glinfático clásico?",
+    options: [
+      "Espacios perivasculares (Virchow-Robin) alrededor de arterias penetrantes",
+      "Espacio subdural exclusivamente",
+      "Cisterna magna exclusivamente",
+      "Axones mielinizados de la cápsula interna"
+    ],
+    correct: 0,
+    feedback: "Correcto: el modelo enfatiza rutas perivasculares, especialmente en torno a arterias penetrantes."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Se administra anestesia y se observan cambios en dinámica de LCR. ¿Cuál variable de estado cerebral puede modular glinfático de forma marcada?",
+    options: [
+      "Estado sueño-vigilia/arousal",
+      "Longitud del fascículo arcuato",
+      "Número de capas corticales",
+      "Decusación piramidal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el estado de arousal (sueño/anestesia/vigilia) se asocia a cambios en dinámica de intercambio y clearance."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Qué afirmación es más precisa sobre el papel de astrocitos en glinfático?",
+    options: [
+      "Los endfeet astrocitarios forman la interfaz perivascular que canaliza agua (AQP4) y condiciona intercambio",
+      "Los astrocitos forman uniones estrechas endoteliales",
+      "Los astrocitos reemplazan a pericitos en la BBB",
+      "Los astrocitos son irrelevantes para espacios perivasculares"
+    ],
+    correct: 0,
+    feedback: "Correcto: el acoplamiento perivascular depende del recubrimiento astrocitario y su maquinaria de agua/iones."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: En SAH, el paciente desarrolla hidrocefalia comunicante. ¿Qué mecanismo glinfático/perivascular es plausible en esta complicación?",
+    options: [
+      "Obstrucción/inflamación de rutas de reabsorción y alteración de espacios perivasculares por sangre y productos",
+      "Aumento de GLUT1 endotelial",
+      "Hiperactividad del colículo superior",
+      "Pérdida de neuronas Betz"
+    ],
+    correct: 0,
+    feedback: "Correcto: sangre subaracnoidea puede alterar reabsorción y dinámica perivascular, favoreciendo hidrocefalia comunicante."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Cuál medida experimental sería más directa para inferir funcionamiento glinfático?",
+    options: [
+      "Cinética de clearance de un trazador en LCR/intersticio con seguimiento por imagen",
+      "Potenciales evocados auditivos de tronco",
+      "EMG de maseteros",
+      "Campimetría automatizada"
+    ],
+    correct: 0,
+    feedback: "Correcto: el glinfático se infiere midiendo movimiento/clearance de trazadores en compartimentos de LCR y parénquima."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Paciente con migraña crónica y aumento de espacios perivasculares en RM. ¿Qué interpretación es más prudente?",
+    options: [
+      "Los espacios perivasculares pueden reflejar cambios de drenaje/perivascularidad, pero no son un marcador específico por sí solos",
+      "Son diagnósticos de demencia por sí solos",
+      "Indican siempre ruptura de BBB",
+      "Prueban infarto lacunar reciente"
+    ],
+    correct: 0,
+    feedback: "Correcto: espacios perivasculares aumentados son inespecíficos; pueden asociarse a múltiples condiciones y deben interpretarse en contexto."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Qué relación entre postura y glinfático se discute con frecuencia en modelos experimentales?",
+    options: [
+      "Cambios posturales pueden modular drenaje/clearance (p. ej., decúbito lateral) en algunos modelos",
+      "La postura no puede afectar dinámica de LCR en absoluto",
+      "La postura solo afecta el nervio óptico, no LCR",
+      "La postura reemplaza la función de la BBB"
+    ],
+    correct: 0,
+    feedback: "Correcto: se ha propuesto que postura modula dinámica de LCR/clearance en modelos, aunque su traducción clínica requiere cautela."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Paciente con esclerosis múltiple progresiva y fatiga marcada. ¿Qué conexión conceptual con glinfático se ha explorado?",
+    options: [
+      "Interacción entre inflamación crónica, cambios perivasculares y posible alteración de clearance",
+      "Desaparición de la capa IV en M1",
+      "Aumento de eflujo P-gp como causa única",
+      "Lesión aislada del núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: se explora si neuroinflamación y cambios perivasculares pueden afectar dinámica de clearance, aunque no es diagnóstico directo."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Cuál estructura anatómica está más directamente relacionada con drenaje inmunológico periférico del SNC recientemente caracterizado?",
+    options: [
+      "Vasos linfáticos meníngeos",
+      "Ganglio de Gasser",
+      "Núcleo dentado",
+      "Corteza calcarina"
+    ],
+    correct: 0,
+    feedback: "Correcto: los linfáticos meníngeos conectan el SNC con rutas linfáticas periféricas."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Paciente con apnea obstructiva del sueño. ¿Qué vía fisiológica podría enlazar apnea con posible disfunción de clearance glinfático?",
+    options: [
+      "Fragmentación del sueño + cambios hemodinámicos/pulsatilidad que afectan dinámica perivascular",
+      "Aumento de conducción saltatoria en cápsula interna",
+      "Hiperactividad del núcleo rojo",
+      "Disminución del número de sinapsis excitatorias"
+    ],
+    correct: 0,
+    feedback: "Correcto: fragmentación del sueño y cambios de pulsatilidad/CO2 pueden modular dinámica LCR-perivascular."
+  },
+  {
+    topic: "Glinfático",
+    question: "¿Qué es una formulación correcta de “espacios perivasculares” en términos funcionales?",
+    options: [
+      "Compartimentos alrededor de vasos penetrantes que participan en intercambio de fluido y solutos",
+      "Sinapsis entre oligodendrocitos y axones",
+      "Capas corticales supragranulares",
+      "Comisuras de sustancia blanca exclusivamente"
+    ],
+    correct: 0,
+    feedback: "Correcto: los espacios perivasculares son rutas anatómicas para intercambio y drenaje, con relevancia glinfática."
+  },
+  {
+    topic: "Glinfático",
+    question: "Caso: Un fármaco que re-polariza AQP4 a endfeet mejora clearance en un modelo. ¿Qué variable microanatómica se está modulando?",
+    options: [
+      "Polarización subcelular de canales de agua en pies astrocitarios perivasculares",
+      "Número de uniones estrechas endoteliales",
+      "Longitud de nodos de Ranvier",
+      "Densidad de células Betz"
+    ],
+    correct: 0,
+    feedback: "Correcto: el concepto de “polarización” de AQP4 se refiere a su localización preferencial en endfeet perivasculares."
+  },
+
+  // =========================
+  // Sustancia Blanca (conexiones y vías) (20)
+  // =========================
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Paciente con afasia de conducción: repetición muy alterada, comprensión relativamente preservada y parafasias fonémicas. ¿Qué tracto es el candidato clásico?",
+    options: [
+      "Fascículo arcuato (dominante)",
+      "Fórnix",
+      "Cíngulo",
+      "Tracto corticoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: la desconexión perisilviana (arcuato) entre redes temporales posteriores y frontales se asocia a afasia de conducción."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Alexia sin agrafia. Puede escribir pero no leer. ¿Qué combinación de lesiones desconectivas explica mejor el síndrome?",
+    options: [
+      "Occipital dominante + esplenio calloso",
+      "Putamen bilateral",
+      "Cerebelo vermiano",
+      "Núcleo ambiguo"
+    ],
+    correct: 0,
+    feedback: "Correcto: lesión occipital izquierda más compromiso del esplenio impide que información visual llegue a redes de lenguaje izquierdas."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Negligencia espacial izquierda severa por desconexión fronto-parietal derecha. ¿Qué fascículo es particularmente relevante?",
+    options: [
+      "SLF derecho",
+      "ILF izquierdo",
+      "Fórnix",
+      "Tracto mamilotalámico"
+    ],
+    correct: 0,
+    feedback: "Correcto: el SLF integra nodos fronto-parietales de atención; su daño derecho se asocia a negligencia."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Lesión retrolenticular derecha de cápsula interna. ¿Qué déficit sensorial es más probable?",
+    options: [
+      "Hemianopsia homónima izquierda",
+      "Anosmia izquierda",
+      "Afasia de Broca",
+      "Disfagia severa"
+    ],
+    correct: 0,
+    feedback: "Correcto: la porción retrolenticular contiene radiaciones ópticas; lesión derecha causa hemianopsia contralateral."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Cuadriparesia espástica súbita con disartria; RM muestra infarto pequeño en brazo posterior de cápsula interna. ¿Qué vía se afecta principalmente?",
+    options: [
+      "Corticoespinal/corticobulbar compactas",
+      "Arcuato",
+      "Cíngulo",
+      "ILF"
+    ],
+    correct: 0,
+    feedback: "Correcto: cápsula interna concentra fibras descendentes motoras; lesiones pequeñas pueden generar déficits desproporcionados."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Hemianopsia superior contralateral (“pie in the sky”) por lesión temporal. ¿Qué segmento de radiaciones ópticas está implicado?",
+    options: [
+      "Bucle de Meyer (temporal)",
+      "Bucle de Baum (parietal)",
+      "Tracto corticoespinal",
+      "Arcuato"
+    ],
+    correct: 0,
+    feedback: "Correcto: el bucle de Meyer en lóbulo temporal lleva fibras inferiores retinales → campo visual superior contralateral."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Prosopagnosia adquirida con lesión occípito-temporal ventral derecha. ¿Qué vía de asociación apoya la red ventral de reconocimiento?",
+    options: [
+      "Fascículo longitudinal inferior (ILF)",
+      "SLF",
+      "Tracto espinotalámico",
+      "Fórnix"
+    ],
+    correct: 0,
+    feedback: "Correcto: ILF conecta occipital con temporal ventral/anterior, crítico para reconocimiento de caras/objetos."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Conducta desinhibida tras lesión frontotemporal. Se sospecha compromiso del unciforme. ¿Qué conexión describe mejor este tracto?",
+    options: [
+      "Orbitofrontal ↔ temporal anterior/amígdala",
+      "Calcarina ↔ tálamo",
+      "Puente ↔ cerebelo (pedúnculo medio)",
+      "Bulbo ↔ médula (corticoespinal)"
+    ],
+    correct: 0,
+    feedback: "Correcto: el unciforme conecta OFC con temporal anterior/amígdala, relevante para valor y regulación emocional."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Apraxia ideomotora de mano izquierda con lenguaje normal tras lesión callosa anterior. ¿Qué mecanismo explica mejor?",
+    options: [
+      "Desconexión interhemisférica desde redes praxias dominantes hacia M1 contralateral",
+      "Lesión de radiaciones ópticas",
+      "Lesión del núcleo ambiguo",
+      "Lesión del riMLF"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cuerpo calloso permite transferencia de programas motores; su daño puede afectar praxis en mano no dominante."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Amnesia anterógrada tras lesión de vía hipocampal eferente. ¿Qué tracto es principal candidato?",
+    options: [
+      "Fórnix",
+      "Arcuato",
+      "SLF",
+      "ILF"
+    ],
+    correct: 0,
+    feedback: "Correcto: el fórnix es una vía mayor de salida hipocampal hacia septo/cuerpos mamilares (memoria episódica)."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Dificultad para iniciar habla con bloqueos; lesión cerca de SMA. ¿Qué fascículo se asocia a iniciación/fluencia?",
+    options: [
+      "Fascículo frontal aslant (FAT)",
+      "ILF",
+      "Fórnix",
+      "Tracto rubroespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: FAT conecta SMA/preSMA con IFG y se asocia a iniciación y fluencia del habla."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Lesión sublenticular izquierda con alteración de discriminación auditiva cortical. ¿Qué fibras se afectan?",
+    options: [
+      "Radiaciones auditivas (CGM → Heschl)",
+      "Radiaciones ópticas",
+      "Tracto espinotalámico",
+      "Cíngulo"
+    ],
+    correct: 0,
+    feedback: "Correcto: las radiaciones auditivas pasan por región sublenticular hacia corteza auditiva primaria."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Síndrome de mano ajena y desconexión posterior. ¿Qué segmento calloso se asocia más con transferencia parieto-occipital?",
+    options: [
+      "Esplenio",
+      "Genu",
+      "Rostrum",
+      "Comisura posterior"
+    ],
+    correct: 0,
+    feedback: "Correcto: el esplenio conecta áreas posteriores y es clave para integración visuoespacial interhemisférica."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Lesión del brazo anterior de cápsula interna afecta principalmente qué dominio?",
+    options: [
+      "Conexiones fronto-talámicas y circuitos ejecutivos",
+      "Radiaciones ópticas",
+      "Tracto espinotalámico",
+      "Vía vestibuloespinal lateral"
+    ],
+    correct: 0,
+    feedback: "Correcto: el brazo anterior contiene fibras fronto-talámicas y frontopontinas; su daño puede afectar funciones ejecutivas."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Paciente con hemianestesia pura contralateral por infarto lacunar talamocapsular. ¿Qué segmento capsular está más relacionado con fibras sensitivas talamocorticales?",
+    options: [
+      "Brazo posterior (porción posterior) y radiaciones talámicas",
+      "Genu exclusivamente",
+      "Brazo anterior exclusivamente",
+      "Rostrum calloso"
+    ],
+    correct: 0,
+    feedback: "Correcto: fibras talamocorticales somatosensoriales transitan en porciones del brazo posterior."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Déficit visuoespacial y simultanagnosia (Balint) por lesión bilateral parieto-occipital. ¿Qué red/vía se altera?",
+    options: [
+      "Vía dorsal occipito-parietal (dónde/cómo)",
+      "Vía ventral occipito-temporal (qué)",
+      "Vía olfatoria primaria",
+      "Vía auditiva troncal"
+    ],
+    correct: 0,
+    feedback: "Correcto: la vía dorsal integra atención visuoespacial y guía visuomotora; su daño bilateral puede producir Balint."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Lesión del cíngulo (cingulum bundle) se asocia a apatía y problemas de memoria contextual. ¿Qué conectividad resume mejor?",
+    options: [
+      "Medial prefrontal ↔ parahipocampo/precuneus (DMN/limbico)",
+      "Radiaciones ópticas",
+      "Arcuato",
+      "Tracto corticoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cíngulo integra nodos límbicos y de DMN, vinculados a motivación y memoria contextual."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Déficit semántico con anomia por lesión de ruta ventral fronto-occipital. ¿Qué tracto es candidato?",
+    options: [
+      "IFOF izquierdo",
+      "SLF derecho",
+      "Fórnix",
+      "Tracto tectoespinal"
+    ],
+    correct: 0,
+    feedback: "Correcto: IFOF se asocia a rutas ventrales semánticas y control fronto-temporo-occipital."
+  },
+  {
+    topic: "Sustancia Blanca (conexiones y vías)",
+    question: "Caso: Alteración de coordinación bimanual con ejecución adecuada de cada mano por separado. ¿Qué función callosa queda más expuesta?",
+    options: [
+      "Sincronización interhemisférica de programas motores",
+      "Producción primaria de fuerza muscular",
+      "Procesamiento visual foveal",
+      "Control autonómico bulbar"
+    ],
+    correct: 0,
+    feedback: "Correcto: el cuerpo calloso acopla programas motores entre hemisferios, esencial para coordinación bimanual."
+  },
+
+  // =========================
+  // Citoarquitectura de las cortezas (20)
+  // =========================
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué rasgo distingue mejor una corteza “granular” primaria sensorial (p. ej., S1/V1) de una corteza motora primaria?",
+    options: [
+      "Capa IV prominente vs capa IV reducida (agranularidad relativa en M1)",
+      "Ausencia total de capa I en cortezas sensoriales",
+      "Ausencia total de interneuronas en M1",
+      "Capas corticales distintas a seis"
+    ],
+    correct: 0,
+    feedback: "Correcto: S1/V1 son granulares con capa IV marcada; M1 es agranular/disgranular con capa IV pobre y capa V muy desarrollada."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión que destruye predominantemente capa IV en S1. ¿Qué flujo de información se afectaría primero?",
+    options: [
+      "Entrada talamocortical específica (VPL/VPM → capa IV)",
+      "Salida corticospinal (capa V)",
+      "Feedback corticotalámico (capa VI)",
+      "Conectividad callosa posterior (capa I)"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa IV es receptora clave de aferencias talámicas específicas en cortezas sensoriales primarias."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión selectiva de capa V en M1. ¿Qué efecto es más probable?",
+    options: [
+      "Reducción del drive descendente corticospinal/corticobulbar",
+      "Pérdida primaria de entrada talámica sensorial",
+      "Ceguera cortical",
+      "Sordera cortical"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa V contiene grandes piramidales de proyección (incl. Betz) hacia tronco y médula."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué enunciado describe mejor la direccionalidad laminar de conexiones feedforward vs feedback entre áreas corticales?",
+    options: [
+      "Feedforward tiende a terminar en capas medias (incl. IV); feedback en capas superficiales/profundas (I y VI)",
+      "Feedforward termina solo en capa I; feedback solo en capa IV",
+      "Ambas terminan exclusivamente en sustancia blanca",
+      "No hay patrón laminar"
+    ],
+    correct: 0,
+    feedback: "Correcto: existe un patrón laminar clásico: feedforward a capas medias; feedback a I/VI modulando dendritas apicales y estado."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión del “estriado de Gennari” en V1. ¿Qué concepto arquitectónico se asocia más a este hallazgo?",
+    options: [
+      "Koniocorteza con alta mielinización y capa IV prominente",
+      "Alocorteza",
+      "Agranularidad",
+      "Paleocorteza olfatoria"
+    ],
+    correct: 0,
+    feedback: "Correcto: V1 es un ejemplo de koniocorteza con alta mielinización y capa IV marcada."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Cuál región cortical es un ejemplo clásico de alocorteza arquicortical (3 capas) en continuidad con neocorteza?",
+    options: [
+      "Hipocampo",
+      "M1 (área 4)",
+      "V1 (área 17)",
+      "S1 (áreas 3,1,2)"
+    ],
+    correct: 0,
+    feedback: "Correcto: hipocampo es arquicorteza (alocorteza) con organización de 3 capas, distinta a neocorteza de 6 capas."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión en corteza entorrinal produce alteración de navegación/memoria episódica. ¿Qué papel citoarquitectónico-funcional resume mejor a entorrinal?",
+    options: [
+      "Puerta de entrada/salida entre neocorteza y hipocampo, con microcircuitos especializados",
+      "Centro primario de movimiento ocular",
+      "Núcleo motor de nervios craneales",
+      "Región sin conexiones con hipocampo"
+    ],
+    correct: 0,
+    feedback: "Correcto: entorrinal conecta neocorteza con formación hipocampal y es crítica para memoria episódica y navegación."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué tipo neuronal es más representativo de salida corticotalámica moduladora?",
+    options: [
+      "Piramidales de capa VI",
+      "Interneuronas PV de capa II",
+      "Células granulares de capa IV",
+      "Purkinje cerebelosas"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa VI proyecta al tálamo y regula ganancia/estado de circuitos talamocorticales."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión en capa I que daña tufts apicales. ¿Qué efecto funcional es más plausible?",
+    options: [
+      "Menor integración de señales de feedback/contexto sobre piramidales profundas",
+      "Abolición de entrada talámica específica",
+      "Destrucción de tracto corticoespinal",
+      "Parálisis del III par"
+    ],
+    correct: 0,
+    feedback: "Correcto: capa I contiene dendritas apicales donde convergen feedback y neuromodulación, claves para contexto y ganancia."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué característica citoarquitectónica se asocia más al área motora primaria (BA4) comparada con premotora (BA6)?",
+    options: [
+      "Mayor desarrollo de capa V con piramidales grandes (incl. Betz) y capa IV pobre",
+      "Capa IV hiperdesarrollada con estría de Gennari",
+      "Ausencia completa de capas II/III",
+      "Presencia de capilares fenestrados como rasgo principal"
+    ],
+    correct: 0,
+    feedback: "Correcto: M1 tiene capa V muy desarrollada (salida), con agranularidad relativa; BA6 es menos “salida pura” que BA4."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Daño del ACC produce abulia y pobre monitoreo de conflicto. ¿Qué tipo de neuronas grandes se describen en ACC e ínsula anterior y se asocian a funciones de integración rápida?",
+    options: [
+      "Neuronas de von Economo",
+      "Células de Purkinje",
+      "Células granulares del cerebelo",
+      "Motoneuronas alfa"
+    ],
+    correct: 0,
+    feedback: "Correcto: neuronas de von Economo se describen en ACC/ínsula anterior y se vinculan a integración de señales sociales/autonómicas."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué gradiente citoarquitectónico caracteriza de forma útil a la ínsula?",
+    options: [
+      "Anterior más agranular (límbico/autonómico) → posterior más granular (sensorial)",
+      "Posterior más agranular → anterior más granular",
+      "Uniformemente granular en toda su extensión",
+      "Uniformemente agranular en toda su extensión"
+    ],
+    correct: 0,
+    feedback: "Correcto: la ínsula muestra un gradiente anterior–posterior que se correlaciona con funciones autonómicas vs sensoriales."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Displasia cortical focal con epilepsia refractaria. ¿Qué propiedad microcircuital laminar favorece hipersincronía cuando se altera el balance E/I?",
+    options: [
+      "Conectividad recurrente local y amplificación por circuitos excitatorios-inhibitorios laminares",
+      "Ausencia total de sinapsis químicas",
+      "Conducción exclusivamente por uniones gap en toda la corteza normal",
+      "Eliminación de todas las dendritas apicales fisiológicamente"
+    ],
+    correct: 0,
+    feedback: "Correcto: la corteza tiene bucles recurrentes; cuando se altera E/I, estos bucles pueden amplificar actividad y facilitar sincronización."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Cuál capa se asocia más a conexiones corticocorticales horizontales y entre áreas (especialmente II/III)?",
+    options: [
+      "Capas II/III",
+      "Capa IV exclusivamente",
+      "Capa VI exclusivamente",
+      "Sustancia blanca sin participación cortical"
+    ],
+    correct: 0,
+    feedback: "Correcto: capas supragranulares (II/III) son clave para conectividad corticocortical y comunicación interareal."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Lesión de FEF causa dificultad para generar sacadas voluntarias contralaterales. En términos de conectividad laminar, ¿qué salida funcional es más relevante?",
+    options: [
+      "Proyecciones desde capas profundas hacia tronco (p. ej., PPRF) y colículo superior",
+      "Entrada talámica a capa IV",
+      "Solo conexiones callosas de capa I",
+      "Proyecciones hipocampales por fórnix"
+    ],
+    correct: 0,
+    feedback: "Correcto: áreas frontales oculomotoras envían salidas descendentes hacia generadores troncoencefálicos de sacadas."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué región representa mejor paleocorteza (alocorteza relacionada a olfato)?",
+    options: [
+      "Corteza piriforme",
+      "V1",
+      "M1",
+      "S1"
+    ],
+    correct: 0,
+    feedback: "Correcto: la corteza piriforme es paleocorteza asociada al sistema olfatorio, distinta de neocorteza sensoriomotora."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Paciente con lesión occipital y fenómeno de “blindsight”. ¿Qué interpretación laminar/circuital es más coherente?",
+    options: [
+      "Preservación de vías subcorticales/extrageniculadas y circuitos alternos pese a daño V1",
+      "Aumento de capa IV en M1",
+      "Bloqueo del núcleo ambiguo",
+      "Ruptura obligatoria de BBB como causa única"
+    ],
+    correct: 0,
+    feedback: "Correcto: blindsight se explica por rutas alternativas (p. ej., colículo superior/pulvinar) que sostienen procesamiento sin consciencia visual completa."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Qué afirmación describe mejor el concepto de columnas corticales en relación con capas?",
+    options: [
+      "Unidades verticales de microcircuito que integran entradas/salidas laminares para procesar una característica o campo receptivo",
+      "Estructuras exclusivas del cerebelo",
+      "Sinónimos de fascículos de sustancia blanca",
+      "Zonas vasculares sin neuronas"
+    ],
+    correct: 0,
+    feedback: "Correcto: la organización columnar integra dinámica laminar (entrada, procesamiento local y salida) en unidades funcionales."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "Caso: Interneuronas SST regulan entradas apicales; PV regulan perisomático. ¿Qué implicación funcional es más directa?",
+    options: [
+      "SST modula integración dendrítica/contextual; PV controla timing y sincronía de disparo",
+      "SST produce potenciales de acción en axones mielinizados",
+      "PV es el principal transportador de glucosa endotelial",
+      "SST forma tight junctions"
+    ],
+    correct: 0,
+    feedback: "Correcto: SST apunta a dendritas (gating de integración); PV controla perisomático (timing/sincronía), crucial para oscilaciones."
+  },
+  {
+    topic: "Citoarquitectura de las cortezas",
+    question: "¿Cuál región es más típicamente disgranular, actuando como transición entre agranular y granular en el gradiente citoarquitectónico?",
+    options: [
+      "Cortezas de asociación límbica/periinsular (zonas de transición)",
+      "V1",
+      "M1",
+      "Corteza piriforme"
+    ],
+    correct: 0,
+    feedback: "Correcto: regiones de transición (disgranulares) conectan dominios agranulares (límbicos/motores) con granulares (sensorio primarios)."
   }
 ];
         // Variables de Estado Dinámicas
@@ -3956,6 +5046,7 @@ shuffleCurrentQuestions();
 shuffleCurrentQuestions();    </script>
 </body>
 </html>
+
 
 
 
